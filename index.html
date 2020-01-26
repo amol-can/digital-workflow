@@ -2,82 +2,173 @@
 <title>study builder</title>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>digital workflow</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="floatExample.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
+    <meta charset=" utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>digital workflow</title>
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="style4.css">
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="floatExample.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-    <header style="text-align: center; background-color: rgb(249, 249, 250);">
-        <h1>Study Builder</h1>
-        <p>section for navbar</p>
-    </header>
+
 
     <div class="container-fluid">
         <div class="row h-100">
 
             <!-- FIXED SIDE PANEL-->
-            <div class="side-button col-2 h-100">
-                
-                <button type="button" class="btn btn-secondary">STUDY LEVEL CONTENT</button><br><br>
-                <button type="button" class="btn btn-secondary">STUDY DESIGN</button><br><br>
-                <button type="button" class="btn btn-secondary">PROTOCOL LEVEL CONTENT</button><br><br>
-                <button type="button" class="btn btn-secondary">VISIT MATRIX</button><br><br>
-                <button type="button" class="btn btn-secondary">DATA COLLECTION</button><br><br>
-                
+            <div class="wrapper">
+                <!-- Sidebar  -->
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Study Builder</h3>
+                        <strong>SB</strong>
+                    </div>
+
+                    <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="#homeSubmenu">
+                                <i class="fas fa-home"></i>
+                                Study level content
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-briefcase"></i>
+                                Study design
+                            </a>
+                            <a href="#" >
+                                <i class="fas fa-copy"></i>
+                                Protocol level content
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-image"></i>
+                                Visit matrix
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-question"></i>
+                                Data collection
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
 
             </div>
             <!-- FORM INPUT-->
             <div class="col-9">
-                <div class="container ">
-                    <form class="form-input">
-                      <div class="text-center mb-4">
-                        <h1 class="h3 mb-3 font-weight-normal">Study level content</h1>
-                      </div>
-                
-                      <div class="form-label-group">
-                        <input type="text" class="form-control" id="protocol-name" placeholder="Enter protocol name" required autofocus>
-                        <label for="protocol-name">Protocolo Name</label>
-                      </div>
-                
-                      <div class="form-label-group">
-                        <input type="text" id="theropotic-area" class="form-control" placeholder="Theropotic Area" required autofocus>
-                        <label for="theropotic-area">Theropotic Area</label>
-                      </div>
-                
-                      <div class="form-label-group">
-                        <input type="text" id="compound-id" class="form-control" placeholder="Compound ID" required>
-                        <label for="compound-id">Compound ID</label>
-                      </div>
+                <div id="content">
 
-                      <div class="form-label-group">
-                        <input type="text" id="study-phase" class="form-control" placeholder="Study Phase" required>
-                        <label for="study-phase">Study Phase</label>
-                      </div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
 
-                      <div class="form-label-group">
-                        <input type="text" id="study-type" class="form-control" placeholder="Study Type" required>
-                        <label for="study-type">Study Type</label>
-                      </div>
+                            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                                <i class="fas fa-align-left"></i>
+                                <span>=</span>
+                            </button>
+                            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button"
+                                data-toggle="collapse" data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <i class="fas fa-align-justify"></i>
+                            </button>
 
-                      <div class="form-label-group">
-                        <input type="text" id="label-indication" class="form-control" placeholder="Indication" required>
-                        <label for="label-indication">Indication</label>
-                      </div>
-                      
-                      <button class="btn btn-lg btn-success btn-block" type="submit">Save</button>
-                    </form>
-                </div>                      
-                    
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Page</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Page</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="container ">
+                        <form class="form-input">
+                            <div class="text-center mb-4">
+                                <h1 class="h3 mb-3 font-weight-normal">Study level content</h1>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" class="form-control" id="protocol-name"
+                                    placeholder="Enter protocol name" required autofocus>
+                                <label for="protocol-name">Protocolo Name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="theropotic-area" class="form-control"
+                                    placeholder="Theropotic Area" required autofocus>
+                                <label for="theropotic-area">Theropotic Area</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="compound-id" class="form-control" placeholder="Compound ID"
+                                    required>
+                                <label for="compound-id">Compound ID</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="study-phase" class="form-control" placeholder="Study Phase"
+                                    required>
+                                <label for="study-phase">Study Phase</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="study-type" class="form-control" placeholder="Study Type"
+                                    required>
+                                <label for="study-type">Study Type</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="label-indication" class="form-control" placeholder="Indication"
+                                    required>
+                                <label for="label-indication">Indication</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-success btn-block" type="submit">Save</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 
 
     <!--
