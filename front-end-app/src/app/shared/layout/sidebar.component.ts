@@ -5,7 +5,7 @@ declare var $: any;
 @Component({
     selector: 'app-layout-sidebar',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.css']
+   
 })
 
 export class SidebarComponent implements AfterViewInit{
