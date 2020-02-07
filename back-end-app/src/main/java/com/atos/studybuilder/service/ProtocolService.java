@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProtocolService {
@@ -23,4 +24,23 @@ public class ProtocolService {
         protocolRepository.findAll().forEach(protocols::add);
         return protocols;
     }
+
+    public Protocol getProtocol(int id) throws Exception {
+        return protocolRepository.findById(id)
+                .orElseThrow(() -> new Exception());
+    }
+
+    //TODO to update the protocol
+   /* public Protocol updateProtocol(int id){
+        return protocolRepository.findById(id)
+                .map(protocol -> {
+                    protocol.setTitle(.getName());
+                    employee.setRole(newEmployee.getRole());
+                    return protocolRepository.save(employee);
+                })
+                .orElseGet(() -> {
+                    newEmployee.setId(id);
+                    return protocolRepository.save(newEmployee);
+                });
+    }*/
 }

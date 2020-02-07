@@ -8,22 +8,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/protocols")
 public class ProtocolController {
 
     @Autowired
     ProtocolService protocolService;
 
-    @RequestMapping(value = "/", produces = {"application/json", "application/xml"})
+    @RequestMapping(value = "/protocols", produces = {"application/json", "application/xml"})
     @ResponseBody
-    public List<Protocol> getProtocols() {
+    public List<Protocol> listProtocols() {
         return protocolService.getProtocols();
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST,
+    @RequestMapping(value = "/protocols", method = RequestMethod.POST,
             produces = {"application/json", "application/xml"})
     public void addProtocol(@RequestBody Protocol protocol) {
         protocolService.createProtocol(protocol);
+    }
+
+    @RequestMapping("/protocols/{id}")
+    public Protocol getprotocol(@PathVariable int id) throws Exception {
+        return protocolService.getProtocol(id);
+    }
+
+    @PutMapping("/protocol/{id}")
+    Protocol updateProtocol(@RequestBody Protocol protocol, @PathVariable int id){
+        return null;
     }
 
 }
