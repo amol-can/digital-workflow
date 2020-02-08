@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProtocolService {
@@ -15,32 +14,27 @@ public class ProtocolService {
     @Autowired
     ProtocolRepository protocolRepository;
 
-    public void createProtocol(Protocol protocol){
+    public void protocolCreate(Protocol protocol){
         protocolRepository.save(protocol);
     }
 
-    public List<Protocol> getProtocols(){
+    public List<Protocol> protocolIndex(){
         List protocols = new ArrayList();
         protocolRepository.findAll().forEach(protocols::add);
         return protocols;
     }
 
-    public Protocol getProtocol(int id) throws Exception {
+    public Protocol protocolShow(int id) throws Exception {
         return protocolRepository.findById(id)
-                .orElseThrow(() -> new Exception());
+                .orElseThrow(() -> new Exception("protocol is not available"));
     }
 
-    //TODO to update the protocol
-   /* public Protocol updateProtocol(int id){
-        return protocolRepository.findById(id)
-                .map(protocol -> {
-                    protocol.setTitle(.getName());
-                    employee.setRole(newEmployee.getRole());
-                    return protocolRepository.save(employee);
-                })
-                .orElseGet(() -> {
-                    newEmployee.setId(id);
-                    return protocolRepository.save(newEmployee);
-                });
-    }*/
+    public void protocolUpdate(int id, Protocol protocol) {
+        protocolRepository.save(protocol);
+    }
+
+    public void protocolDelete(int protocolId){
+        protocolRepository.deleteById(protocolId);
+    }
+
 }

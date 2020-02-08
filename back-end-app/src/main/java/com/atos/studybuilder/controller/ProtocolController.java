@@ -8,31 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/protocols")
 public class ProtocolController {
 
     @Autowired
     ProtocolService protocolService;
 
-    @RequestMapping(value = "/protocols", produces = {"application/json", "application/xml"})
+    @GetMapping(produces = {"application/json", "application/xml"})
     @ResponseBody
-    public List<Protocol> listProtocols() {
-        return protocolService.getProtocols();
+    List<Protocol> protocolIndex() {
+        return protocolService.protocolIndex();
     }
 
-    @RequestMapping(value = "/protocols", method = RequestMethod.POST,
-            produces = {"application/json", "application/xml"})
-    public void addProtocol(@RequestBody Protocol protocol) {
-        protocolService.createProtocol(protocol);
+    @PostMapping(produces = {"application/json", "application/xml"})
+    void protocolCreate(@RequestBody Protocol protocol) {
+        protocolService.protocolCreate(protocol);
     }
 
-    @RequestMapping("/protocols/{id}")
-    public Protocol getprotocol(@PathVariable int id) throws Exception {
-        return protocolService.getProtocol(id);
+    @GetMapping("/{id}")
+    Protocol protocolShow(@PathVariable int id) throws Exception {
+        return protocolService.protocolShow(id);
     }
 
-    @PutMapping("/protocol/{id}")
-    Protocol updateProtocol(@RequestBody Protocol protocol, @PathVariable int id){
-        return null;
+    @PutMapping("/{id}")
+    void protocolUpdate(@RequestBody Protocol protocol, @PathVariable int id) {
+        protocolService.protocolUpdate(id,protocol);
+    }
+
+    @DeleteMapping("/{id}")
+    void protocolDelete(@PathVariable int id){
+        protocolService.protocolDelete(id);
     }
 
 }
