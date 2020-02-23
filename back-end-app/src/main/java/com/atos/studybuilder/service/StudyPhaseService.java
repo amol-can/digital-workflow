@@ -23,4 +23,6 @@ public class StudyPhaseService {
         studyPhaseRepository.findAll().forEach(studyPhases::add);
         return studyPhases;
     }
+
+    // TODO need to and rest of the end points
 }
