@@ -38,11 +38,16 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
         <!-- H2 in-memory database-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
-        </dependency>
+        </dependency>-->
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 		<!--API documentation-->
 		<dependency>
 			<groupId>com.spring4all</groupId>
