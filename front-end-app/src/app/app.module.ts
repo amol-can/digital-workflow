@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HomeComponent } from './core/home/home.component';
 import { StudyLevelContentComponent } from './core/study-level-content/study-level-content.component';
+import { LibraryComponent } from './core/library/library.component';
+import { AddElementComponent } from './core/library/add-element/add-element.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { StudyLevelContentComponent } from './core/study-level-content/study-lev
     AppComponent,
     SidebarComponent,
     HomeComponent,
-    StudyLevelContentComponent
+    StudyLevelContentComponent,
+    LibraryComponent,
+    AddElementComponent
   ],
   imports: [
     BrowserModule,
