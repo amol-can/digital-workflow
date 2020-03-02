@@ -1,5 +1,6 @@
 <div class="container">
-  <form (ngSubmit) = "onSubmit(f)" #f = "ngForm">
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="text-center mb-4">
       <h1 class="h3 mb-3 font-weight-normal">Study level content</h1>
     </div>
@@ -7,7 +8,7 @@
     <div class="form-group">
       <label for="protocol-name">Protocol Name</label>
       <input type="text" class="form-control" id="protocol-name" placeholder="Enter protocol name" required autofocus
-        [ngModel] = "defaultVal" name="protocol-name">
+        [ngModel]="defaultVal" name="protocol-name">
       <small id="protocol-name" class="form-text text-muted">We'll create the new protocol name else fetch from
         existing one.</small>
     </div>
@@ -32,16 +33,19 @@
 
     <div class="form-group">
       <label for="study-type">Study Type</label>
-      <input type="text" id="study-type" class="form-control" placeholder="Study Type" 
-      ngModel name = "study-type" required>
+      <input type="text" id="study-type" class="form-control" placeholder="Study Type" ngModel name="study-type"
+        required>
     </div>
 
     <div class="form-group">
       <label for="label-indication">Indication</label>
-      <input type="text" id="label-indication" class="form-control" placeholder="Indication" 
-      ngModel name = "label-indication" required>
+      <input type="text" id="label-indication" class="form-control" placeholder="Indication" ngModel
+        name="label-indication" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-primary">Next</button>
+    </div>
   </form>
 </div>
