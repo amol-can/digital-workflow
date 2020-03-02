@@ -3,13 +3,14 @@ import * as $ from 'jquery';
 declare var $: any;
 
 @Component({
-    selector: 'app-layout-sidebar',
+    selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
    
 })
 
 export class SidebarComponent implements AfterViewInit{
-    ngAfterViewInit(): void {
+    
+  ngAfterViewInit(): void {
         $(".sidebar-dropdown > a").click(function () {
             $(".sidebar-submenu").slideUp(200);
             if (
