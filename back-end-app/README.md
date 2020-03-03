@@ -157,15 +157,6 @@ The project (a.k.a. project directory) has a particular directory structure. A r
 
 - `pom.xml` - contains all the project dependencies
  
-## Reporting Issues
-
-This Project uses GitHub's integrated issue tracking system to record bugs and feature requests. If you want to raise an issue, please follow the recommendations below:
-
-* Before you log a bug, please https://github.com/AnanthaRajuC/Spring-Boot-Application-Template/search?type=Issues[search the issue tracker]
-  to see if someone has already reported the problem.
-* If the issue doesn't already exist, https://github.com/AnanthaRajuC/Spring-Boot-Application-Template/issues/new[create a new issue]. 
-* Please provide as much information as possible with the issue report.
-* If you need to paste code, or include a stack trace use Markdown +++```+++ escapes before and after your text. 
   
 ## Resources
 
