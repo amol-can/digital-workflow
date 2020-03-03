@@ -20,10 +20,11 @@
   <!-- Add Tab-->
   <div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
     aria-labelledby="home-tab">
-    <form>
+    <form #addElementForm = "ngForm" (ngSubmit)="onAddElement()">
+      <!-- {{ addElementForm.value | json }} -->
       <div class="form-group">
         <label for="designElement">Study Design Element</label>
-        <input type="email" class="form-control" id="designElement">
+        <input type="text" class="form-control" id="designElement" name="designElement"  [(ngModel)]="sdElement.studyDesignElement">
       </div>
       <div class="form-group">
         <label for="module">Module</label>
@@ -31,7 +32,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Options</label>
           </div>
-          <select class="custom-select" id="module">
+          <select class="custom-select" id="module" name="module"  [(ngModel)]="sdElement.module" >
             <option selected>Choose...</option>
             <option value="1">Study Level Content</option>
             <option value="2">Protocol Level Content</option>
@@ -40,22 +41,22 @@
       </div>
       <div class="form-group">
         <label for="label">Label</label>
-        <input type="text" class="form-control" id="label">
+        <input type="text" class="form-control" id="label" name="label" [(ngModel)]="sdElement.label">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Guidance Text</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <label for="guidanceText">Guidance Text</label>
+        <textarea class="form-control" id="guidanceText" rows="2" name="guidanceText" [(ngModel)]="sdElement.guidanceText"></textarea>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="active" value="1">
+        <input class="form-check-input" type="checkbox" id="active" value="1" name="active" [(ngModel)]="sdElement.active" >
         <label class="form-check-label" for="active">Active</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="multiple" value="1">
+        <input class="form-check-input" type="checkbox" id="multiple" value="1" name="multiple" [(ngModel)]="sdElement.multiplePossible">
         <label class="form-check-label" for="multiple">Multiple Possible</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="required" value="1">
+        <input class="form-check-input" type="checkbox" id="required" value="1" name="required" [(ngModel)]="sdElement.required">
         <label class="form-check-label" for="required">Required</label>
       </div>
       <br><br>
