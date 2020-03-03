@@ -6,7 +6,7 @@ import { Protocol } from './protocol.model';
   providedIn: 'root'
 })
 export class ProtocolService {
-  apiUrl = "http://localhost:8080/api/v0/protocols";
+  apiUrl = "server/api/v0/protocols";
 
   constructor(private http: HttpClient) { }
 
