@@ -36,6 +36,7 @@ public class StudyDesignElementLibrary {
         this.required = required;
     }
 
+    // getters
     public int getElementId() {
         return elementId;
     }
@@ -72,9 +73,7 @@ public class StudyDesignElementLibrary {
         return required;
     }
 
-    public void setElementId(int elementId) {
-        this.elementId = elementId;
-    }
+    // setters
 
     public void setStudyDesignElement(String studyDesignElement) {
         this.studyDesignElement = studyDesignElement;
