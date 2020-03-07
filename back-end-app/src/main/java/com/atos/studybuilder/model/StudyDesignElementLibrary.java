@@ -8,12 +8,16 @@ import javax.persistence.Id;
 @Entity
 public class StudyDesignElementLibrary {
 
+    enum DesignModule{
+        Study_Level_Content, Protocol_Level_Content;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int elementId;
 
     private String studyDesignElement;
-    private String module;
+    private DesignModule module;
     private String label;
     private String displayOrder;
     private boolean active;
@@ -24,7 +28,7 @@ public class StudyDesignElementLibrary {
     public StudyDesignElementLibrary() {
     }
 
-    public StudyDesignElementLibrary(String studyDesignElement, String module, String label, String displayOrder,
+    public StudyDesignElementLibrary(String studyDesignElement, DesignModule module, String label, String displayOrder,
                                      boolean active, String guidanceText, boolean multiplePossible, boolean required) {
         this.studyDesignElement = studyDesignElement;
         this.module = module;
@@ -45,7 +49,7 @@ public class StudyDesignElementLibrary {
         return studyDesignElement;
     }
 
-    public String getModule() {
+    public DesignModule getModule() {
         return module;
     }
 
@@ -79,7 +83,7 @@ public class StudyDesignElementLibrary {
         this.studyDesignElement = studyDesignElement;
     }
 
-    public void setModule(String module) {
+    public void setModule(DesignModule module) {
         this.module = module;
     }
 
