@@ -17,14 +17,17 @@ const httpOptions = {
 })
 export class LibraryService {
 
+  libraryUrl = "/server/api/v0/reference-library";
+
   constructor(private http: HttpClient) { }
 
-  addStudyDesignElement(data: StudyDesignElement) {
-    console.log('custome data: ',data)
-    this.http.post(
-      "/server/api/v0/reference-library", data, httpOptions).subscribe(responseData => {
-        console.log('postResponseData', responseData)
-      });
+  addStudyDesignElement(data: StudyDesignElement) : Observable<any> {
+    console.log('custome post request data: ',data)
+    return this.http.post(this.libraryUrl, data, httpOptions);
+  }
+
+  getStudyDesignElement() : Observable<any>{
+    return this.http.get<StudyDesignElement>(this.libraryUrl,httpOptions);
   }
 
 }
