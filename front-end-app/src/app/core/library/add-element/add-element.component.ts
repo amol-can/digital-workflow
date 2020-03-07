@@ -13,17 +13,12 @@ export class AddElementComponent implements OnInit, AfterViewInit {
   postErrorMessage = '';
   postSuccessMessage = '';
 
-  sdElements$: StudyDesignElement[];
-
   sdElement = new StudyDesignElement("", "", "", false, "", false, false);
 
   constructor(private lbService: LibraryService) { }
 
   ngOnInit() {  
-    this.lbService.getStudyDesignElement().subscribe(
-      response => this.sdElements$ = response,
-      error => console.log('Error: ', error) 
-    );
+    
   }
 
   ngAfterViewInit(): void { 

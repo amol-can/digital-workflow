@@ -4,18 +4,18 @@ import { HomeComponent } from './core/home/home.component';
 import { StudyLevelContentComponent } from './core/study-level-content/study-level-content.component';
 import { LibraryComponent } from './core/library/library.component';
 import { ListElementComponent } from './core/library/list-element/list-element.component';
+import { AddElementComponent } from './core/library/add-element/add-element.component';
 
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "study-level", component: StudyLevelContentComponent},
+  { path: "", component: HomeComponent },
+  { path: "study-level", component: StudyLevelContentComponent },
   {
     path: "library-management", component: LibraryComponent,
     children: [
-      {
-        path: 'show',
-        component: ListElementComponent
-      }
+      { path: "", component: AddElementComponent },
+      { path: "add", component: AddElementComponent },
+      { path: "show", component: ListElementComponent }
     ]
   },
 
