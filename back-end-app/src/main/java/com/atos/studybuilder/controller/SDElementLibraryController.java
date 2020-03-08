@@ -26,4 +26,9 @@ public class SDElementLibraryController {
         sdElementLibraryService.studyDesignElementLibrarySave(studyDesignElementLibrary);
     }
 
+    @GetMapping("/{id}")
+    StudyDesignElementLibrary studyDesignElementLibraryShow(@PathVariable int id) throws Exception {
+        return sdElementLibraryService.studyDesignElementLibraryShow(id);
+    }
+
 }

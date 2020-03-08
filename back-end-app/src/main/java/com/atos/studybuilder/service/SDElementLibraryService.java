@@ -24,4 +24,9 @@ public class SDElementLibraryService {
         sdElementLibraryRepository.save(studyDesignElementLibrary);
     }
 
+    public StudyDesignElementLibrary studyDesignElementLibraryShow(int id) throws Exception {
+        return sdElementLibraryRepository.findById(id)
+                .orElseThrow(() -> new Exception("Given Study Design Element Library ID is not available"));
+    }
+
 }
