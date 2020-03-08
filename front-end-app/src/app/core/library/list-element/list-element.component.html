@@ -12,6 +12,7 @@
         <th scope="col">Active</th>
         <th scope="col">Multiple Possible</th>
         <th scope="col">Required</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody *ngFor="let studyElement of sdElements$">
@@ -23,6 +24,7 @@
         <td>{{studyElement.active}}</td>
         <td>{{studyElement.multiplePossible}}</td>
         <td>{{studyElement.required}}</td>
+        <td><button type="button" class="btn btn-outline-info" (click)="editElement(studyElement)">Edit</button></td>
       </tr>
     </tbody>
   </table>

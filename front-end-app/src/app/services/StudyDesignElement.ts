@@ -1,5 +1,7 @@
 export class StudyDesignElement {
+    public elementId: number;
     constructor(
+    
     public studyDesignElement: string,
     public module: string,
     public label: string,

@@ -5,6 +5,7 @@ import { StudyLevelContentComponent } from './core/study-level-content/study-lev
 import { LibraryComponent } from './core/library/library.component';
 import { ListElementComponent } from './core/library/list-element/list-element.component';
 import { AddElementComponent } from './core/library/add-element/add-element.component';
+import { EditElementComponent } from './core/library/edit-element/edit-element.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
     children: [
       { path: "", component: AddElementComponent },
       { path: "add", component: AddElementComponent },
-      { path: "show", component: ListElementComponent }
+      { path: "show", component: ListElementComponent },
+      { path: "edit", component: EditElementComponent },
+      { path: "edit/:id", component: AddElementComponent }
     ]
   },
 

@@ -30,4 +30,8 @@ export class LibraryService {
     return this.http.get<StudyDesignElement>(this.libraryUrl,httpOptions);
   }
 
+  findStudyDesignElement(id: any): Observable<any>{
+    return this.http.get<StudyDesignElement>(this.libraryUrl+"/"+id,httpOptions);
+  }
+
 }

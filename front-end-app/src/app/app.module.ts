@@ -10,7 +10,8 @@ import { HomeComponent } from './core/home/home.component';
 import { StudyLevelContentComponent } from './core/study-level-content/study-level-content.component';
 import { LibraryComponent } from './core/library/library.component';
 import { AddElementComponent } from './core/library/add-element/add-element.component';
-import { ListElementComponent } from './core/library/list-element/list-element.component'
+import { ListElementComponent } from './core/library/list-element/list-element.component';
+import { EditElementComponent } from './core/library/edit-element/edit-element.component'
 
 
 
@@ -23,7 +24,8 @@ import { ListElementComponent } from './core/library/list-element/list-element.c
     StudyLevelContentComponent,
     LibraryComponent,
     AddElementComponent,
-    ListElementComponent
+    ListElementComponent,
+    EditElementComponent
   ],
   imports: [
     BrowserModule,
