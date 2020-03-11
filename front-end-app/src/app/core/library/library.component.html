@@ -1,12 +1,28 @@
-
-
 <div class="container">
     <div class="row">
         <div class="col-12">
             <p>library works!</p>
         </div>
         <div class="col-12">
-            <app-add-element></app-add-element>
+            <!-- Tab Nav-Bar-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="addElement-tab" data-toggle="tab" routerLink="/library-management/add" role="tab"
+                        aria-controls="addElement" aria-selected="true">Add Element</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="listElement-tab" data-toggle="tab" routerLink="/library-management/show" role="tab"
+                        aria-controls="listElement" aria-selected="false">List Element</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="editElement-tab" data-toggle="tab" routerLink="/library-management/edit"
+                        role="tab" aria-controls="editElement" aria-selected="false">Modify Element</a>
+                </li>
+            </ul>
         </div>
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+        
     </div>
 </div>
