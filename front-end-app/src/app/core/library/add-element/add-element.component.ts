@@ -17,7 +17,7 @@ export class AddElementComponent implements OnInit, AfterViewInit {
 
   urlParam = null;
 
-  sdElement = new StudyDesignElement("", "", "", false, "", false, false);
+  sdElement = new StudyDesignElement("", null, "", false, "", false, false);
 
   constructor(private lbService: LibraryService, private _router: ActivatedRoute) { }
 

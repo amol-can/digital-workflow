@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudyDesignElementValueService {
+public class SDEValueService {
 
     @Autowired
     StudyDesignElementValueRepository sdeValueRepository;
@@ -28,8 +28,16 @@ public class StudyDesignElementValueService {
      * To save the study design element value
      * @param studyDesignElementValue
      */
-    public void studyDesignElementSave(StudyDesignElementValue studyDesignElementValue){
+    public void studyDesignElementValueSave(StudyDesignElementValue studyDesignElementValue){
         sdeValueRepository.save(studyDesignElementValue);
+    }
+
+    public void studyDesignElementValueUpdate(StudyDesignElementValue studyDesignElementValue){
+        sdeValueRepository.save(studyDesignElementValue);
+    }
+
+    public void studyDesignElementValueDelete(int elementId){
+        sdeValueRepository.deleteById(elementId);
     }
 
 }

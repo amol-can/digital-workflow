@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class StudyDesignElementValue {
 
     enum ElementValueState {
-        ACTIVATE,INACTIVE,OBSOLETE
+        ACTIVE, INACTIVE, OBSOLETE
     }
 
     @Id
@@ -20,16 +20,19 @@ public class StudyDesignElementValue {
     private String value;
     private ElementValueState state;
     private String definition;
+    private int displayOrder;
 
-    public StudyDesignElementValue(){}
+    public StudyDesignElementValue() {
+    }
 
     public StudyDesignElementValue(int elementValuesId, String studyDesignElement, String value,
-                                   ElementValueState state, String definition) {
+                                   ElementValueState state, String definition, int displayOrder) {
         this.elementValuesId = elementValuesId;
         this.studyDesignElement = studyDesignElement;
         this.value = value;
         this.state = state;
         this.definition = definition;
+        this.displayOrder = displayOrder;
     }
 
     // getters
@@ -53,7 +56,15 @@ public class StudyDesignElementValue {
         return definition;
     }
 
+    public int getDisplayOrder() {
+        return displayOrder;
+    }
+
     // setters
+
+    public void setElementValuesId(int elementValuesId) {
+        this.elementValuesId = elementValuesId;
+    }
 
     public void setStudyDesignElement(String studyDesignElement) {
         this.studyDesignElement = studyDesignElement;
@@ -71,6 +82,10 @@ public class StudyDesignElementValue {
         this.definition = definition;
     }
 
+    public void setDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
     // toString
 
     @Override
@@ -81,6 +96,7 @@ public class StudyDesignElementValue {
                 ", value='" + value + '\'' +
                 ", state=" + state +
                 ", definition='" + definition + '\'' +
+                ", displayOrder=" + displayOrder +
                 '}';
     }
 }
