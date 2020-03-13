@@ -1,0 +1,24 @@
+<p>add-value works!</p>
+<div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
+    aria-labelledby="home-tab">
+    <form #addElementForm="ngForm" (ngSubmit)="onAddElement()" ngNativeValidate>
+
+        <p *ngFor="let sde of sdeValues$ ">
+            {{sde.elementValuesId}}
+            {{sde.state}}
+        </p>
+
+        <div class="form-group">
+            <label for="module">Study Design Element</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+              </div>
+              <select class="custom-select" id="module" name="module"  [(ngModel)]="element" required>
+                <!-- TODO Need to add reference-library call -->
+                <option *ngFor = "let sde of sdeValues$" [value]="sde.id">{{ sde.studyDesignElement}}</option>
+              </select>
+            </div>
+          </div>
+    </form>
+</div>

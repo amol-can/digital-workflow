@@ -6,6 +6,8 @@ import { LibraryComponent } from './core/library/library.component';
 import { ListElementComponent } from './core/library/list-element/list-element.component';
 import { AddElementComponent } from './core/library/add-element/add-element.component';
 import { EditElementComponent } from './core/library/edit-element/edit-element.component';
+import { ElementValueComponent } from './core/library/element-value/element-value.component';
+import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,13 @@ const routes: Routes = [
       { path: "edit/:id", component: AddElementComponent }
     ]
   },
+  {
+    path: "element-values", component: ElementValueComponent,
+    children: [
+      { path: "", component: AddValueComponent },
+      { path: "add", component: AddValueComponent }
+    ]
+  }
 
 ];
 

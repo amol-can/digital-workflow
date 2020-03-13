@@ -11,7 +11,9 @@ import { StudyLevelContentComponent } from './core/study-level-content/study-lev
 import { LibraryComponent } from './core/library/library.component';
 import { AddElementComponent } from './core/library/add-element/add-element.component';
 import { ListElementComponent } from './core/library/list-element/list-element.component';
-import { EditElementComponent } from './core/library/edit-element/edit-element.component'
+import { EditElementComponent } from './core/library/edit-element/edit-element.component';
+import { ElementValueComponent } from './core/library/element-value/element-value.component';
+import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
 
 
 
@@ -25,7 +27,9 @@ import { EditElementComponent } from './core/library/edit-element/edit-element.c
     LibraryComponent,
     AddElementComponent,
     ListElementComponent,
-    EditElementComponent
+    EditElementComponent,
+    ElementValueComponent,
+    AddValueComponent
   ],
   imports: [
     BrowserModule,
