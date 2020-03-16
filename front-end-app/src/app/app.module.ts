@@ -15,6 +15,7 @@ import { EditElementComponent } from './core/library/edit-element/edit-element.c
 import { ElementValueComponent } from './core/library/element-value/element-value.component';
 import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
 import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
+import { ElementRelationshipComponent } from './core/library/element-relationship/element-relationship.component';
 
 
 
@@ -31,7 +32,8 @@ import { ListValueComponent } from './core/library/element-value/list-value/list
     EditElementComponent,
     ElementValueComponent,
     AddValueComponent,
-    ListValueComponent
+    ListValueComponent,
+    ElementRelationshipComponent
   ],
   imports: [
     BrowserModule,
