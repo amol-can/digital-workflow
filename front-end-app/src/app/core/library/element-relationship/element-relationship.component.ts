@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LibraryService } from 'src/app/services/library.service';
 import { StudyDesignElement } from 'src/app/services/StudyDesignElement';
 import { ElementRelationship } from 'src/app/services/model/element-relation-model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-element-relationship',
@@ -24,6 +25,14 @@ export class ElementRelationshipComponent implements OnInit {
       response => this.sdeLibrary$ = response,
       error => console.log('error while calling sde library: ', error)
     );
+  }
+
+  addElementRelationship(form: NgForm){
+    this.relationService.addStudyDesignElementRelationship(this.elementRelationship).subscribe(
+      response => console.log('record inserted: ', response),
+      error => console.log('Error while adding relationship: ', error)
+    );
+    
   }
 
 }

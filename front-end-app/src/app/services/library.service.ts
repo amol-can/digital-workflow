@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { StudyDesignElement } from './StudyDesignElement';
 import { StudyDesignElementValue } from './model/sde-value-model';
+import { ElementRelationship } from './model/element-relation-model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +20,8 @@ const httpOptions = {
 export class LibraryService {
 
   libraryUrl = "/server/api/v0/reference-library";
-  libraryValueUrl = "/server/api/v0/reference-value"
+  libraryValueUrl = "/server/api/v0/reference-value";
+  elementRelationshipUrl = '/server/api/v0/library-relationship';
 
   constructor(private http: HttpClient) { }
 
@@ -54,5 +56,11 @@ export class LibraryService {
   studyDesignElementValueDelete(id: any):Observable<any>{
     return this.http.delete(this.libraryValueUrl+"/"+id,httpOptions);
   }
+
+  /* Element relationship APIs */
+  addStudyDesignElementRelationship(element : ElementRelationship): Observable<any>{
+    return this.http.post<ElementRelationship>(this.elementRelationshipUrl,element,httpOptions);
+  }
+
 
 }
