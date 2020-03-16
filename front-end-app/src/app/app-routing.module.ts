@@ -8,6 +8,7 @@ import { AddElementComponent } from './core/library/add-element/add-element.comp
 import { EditElementComponent } from './core/library/edit-element/edit-element.component';
 import { ElementValueComponent } from './core/library/element-value/element-value.component';
 import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
+import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,9 @@ const routes: Routes = [
     path: "element-values", component: ElementValueComponent,
     children: [
       { path: "", component: AddValueComponent },
-      { path: "add", component: AddValueComponent }
+      { path: "add", component: AddValueComponent },
+      { path: "show", component: ListValueComponent },
+      { path: "edit/:id", component: AddValueComponent }
     ]
   }
 

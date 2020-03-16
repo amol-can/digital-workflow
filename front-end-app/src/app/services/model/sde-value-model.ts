@@ -10,6 +10,8 @@ export class StudyDesignElementValue{
         public state: ElementValueState,
         public definition: string,
         public displayOrder: number
-    ){}
+    )
+    {}
+    
 
 }

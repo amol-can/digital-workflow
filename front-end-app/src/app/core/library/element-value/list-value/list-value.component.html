@@ -1,0 +1,42 @@
+<br>
+<div class="border" style="padding: 50px;">
+
+  <!-- Search by element-->
+  <div class="input-group">
+    <select class="custom-select" id="searchByElement">
+      <option selected>Choose...</option>
+      
+    </select>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Search</button>
+    </div>
+  </div>
+
+  <br>
+
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Study Design Element</th>
+        <th scope="col">Value</th>
+        <th scope="col">State</th>
+        <th scope="col">Definition</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let studyElement of sdeValues$">
+      <tr>
+        <th scope="row">{{ studyElement.studyDesignElement }}</th>
+        <td>{{studyElement.value}}</td>
+        <td>{{studyElement.state}}</td>
+        <td>{{studyElement.definition}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-info" (click)="editElement(studyElement)">Edit</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteSdeValue(studyElement.elementValuesId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

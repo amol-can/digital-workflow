@@ -43,4 +43,16 @@ export class LibraryService {
     return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,httpOptions);
   }
 
+  addStudyDesignElementValue(data: StudyDesignElementValue): Observable<any>{
+    return this.http.post<StudyDesignElementValue>(this.libraryValueUrl, data, httpOptions);
+  }
+
+  findStudyDesignElementValue(id: any): Observable<any>{
+    return this.http.get<StudyDesignElementValue>(this.libraryValueUrl+"/"+id,httpOptions);
+  }
+
+  studyDesignElementValueDelete(id: any):Observable<any>{
+    return this.http.delete(this.libraryValueUrl+"/"+id,httpOptions);
+  }
+
 }
