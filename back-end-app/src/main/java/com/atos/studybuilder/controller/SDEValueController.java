@@ -26,6 +26,13 @@ public class SDEValueController {
         sdeValueService.studyDesignElementValueSave(sdeValue);
     }
 
+    //
+
+    @GetMapping(value = "/{sdeId}",produces = {"application/json", "application/xml"})
+    StudyDesignElementValue studyDesignElementValueShow(@PathVariable("sdeId") int studyDesignElementId) throws Exception {
+        return sdeValueService.studyDesignElementValueShow(studyDesignElementId);
+    }
+
     @DeleteMapping("/{id}")
     void studyDesignElementValueDelete(@PathVariable int id){
         sdeValueService.studyDesignElementValueDelete(id);
