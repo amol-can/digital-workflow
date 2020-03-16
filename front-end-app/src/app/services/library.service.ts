@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { StudyDesignElement } from './StudyDesignElement';
+import { StudyDesignElementValue } from './model/sde-value-model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +19,11 @@ const httpOptions = {
 export class LibraryService {
 
   libraryUrl = "/server/api/v0/reference-library";
+  libraryValueUrl = "/server/api/v0/reference-value"
 
   constructor(private http: HttpClient) { }
+
+  /* Study Design Element APIs */
 
   addStudyDesignElement(data: StudyDesignElement) : Observable<any> {
     console.log('custome post request data: ',data)
@@ -32,6 +36,23 @@ export class LibraryService {
 
   findStudyDesignElement(id: any): Observable<any>{
     return this.http.get<StudyDesignElement>(this.libraryUrl+"/"+id,httpOptions);
+  }
+
+  /* Study Design Element Value APIs */
+  getStudyDesignElementValue(): Observable<any>{
+    return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,httpOptions);
+  }
+
+  addStudyDesignElementValue(data: StudyDesignElementValue): Observable<any>{
+    return this.http.post<StudyDesignElementValue>(this.libraryValueUrl, data, httpOptions);
+  }
+
+  findStudyDesignElementValue(id: any): Observable<any>{
+    return this.http.get<StudyDesignElementValue>(this.libraryValueUrl+"/"+id,httpOptions);
+  }
+
+  studyDesignElementValueDelete(id: any):Observable<any>{
+    return this.http.delete(this.libraryValueUrl+"/"+id,httpOptions);
   }
 
 }
