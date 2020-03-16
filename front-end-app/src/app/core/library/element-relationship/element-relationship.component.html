@@ -42,13 +42,13 @@
                 <td>
                   <div class="form-check">
                     <input class="form-check-input position-static" type="checkbox" id="{{ sde.elementId }}" name="related" value="1" 
-                    aria-label="..." [(ngModel)]="elementRelationship.relatesTo">
+                    aria-label="..." [ngModel]="elementRelationship.relatesTo">
                   </div>
                 </td>
                 <td>
                   <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" id="{{ sde.elementId }}" name="mandatory" value="1" 
-                    aria-label="..." [(ngModel)]="elementRelationship.mandatory">
+                    <input class="form-check-input position-static" type="checkbox" id="s+{{ sde.elementId }}" name="mandatory" value="1" 
+                    aria-label="..." [ngModel]="elementRelationship.mandatory">
                   </div>
                 </td>
               </tr>
