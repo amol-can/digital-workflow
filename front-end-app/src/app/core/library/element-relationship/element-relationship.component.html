@@ -36,8 +36,8 @@
                 <th scope="col">Mandatory</th>
               </tr>
             </thead>
-            <tbody *ngFor="let sde of sdeLibrary$">
-              <tr>
+            <tbody>
+              <tr *ngFor="let sde of sdeLibrary$">
                 <td scope="row">
                   <input name="sdElement2" value="{{ sde.studyDesignElement}}" readonly>
                 </td>

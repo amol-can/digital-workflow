@@ -11,12 +11,14 @@ import { NgForm } from '@angular/forms';
 })
 export class ElementRelationshipComponent implements OnInit {
   sdeLibrary$: StudyDesignElement[];
-
+  
+  elementRelationshipArray = [];
   elementRelationship = new ElementRelationship('',null,false,'',null,false);
 
   constructor(private relationService: LibraryService) { }
 
   ngOnInit() {
+    this.elementRelationshipArray.push(this.elementRelationship);
     this.getStudyDesignElementLibrary();
   }
 
