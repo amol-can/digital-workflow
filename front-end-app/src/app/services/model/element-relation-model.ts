@@ -3,7 +3,7 @@ export class ElementRelationship{
 
     constructor(
         public elementType: string,
-        public elementTypeId: string, // optional for foreign key
+        public elementTypeId: number, // optional for foreign key
         public relatesTo: boolean,
         public elementType2: string,
         public elementType2Id: number, // optional for foreign key

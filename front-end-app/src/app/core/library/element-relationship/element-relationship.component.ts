@@ -10,30 +10,42 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./element-relationship.component.css']
 })
 export class ElementRelationshipComponent implements OnInit {
-  sdeLibrary$: StudyDesignElement[];
+  rootSdeElement = "";
+  sdeLibrary$:StudyDesignElement[];
   
-  elementRelationshipArray = [];
   elementRelationship = new ElementRelationship('',null,false,'',null,false);
+  elementRelationshipArray = [];
 
   constructor(private relationService: LibraryService) { }
 
   ngOnInit() {
-    this.elementRelationshipArray.push(this.elementRelationship);
     this.getStudyDesignElementLibrary();
   }
 
   getStudyDesignElementLibrary(){
     this.relationService.getStudyDesignElement().subscribe(
-      response => this.sdeLibrary$ = response,
+      response => {
+        this.sdeLibrary$ = response;
+        /*console.log('sde lib: ', this.sdeLibrary$);
+        console.log('Length: ', this.sdeLibrary$.length);*/
+        this.sdeLibrary$.forEach(element => {
+          /*console.log('getStudyDesignElement: ', element),    */      
+          this.elementRelationshipArray.push(new ElementRelationship(element.studyDesignElement,element.elementId,false,element.studyDesignElement,element.elementId,false))        
+        });
+        console.log('after elementRelationshipArray push: ', this.elementRelationshipArray);
+      },
       error => console.log('error while calling sde library: ', error)
     );
   }
 
-  addElementRelationship(form: NgForm){
-    this.relationService.addStudyDesignElementRelationship(this.elementRelationship).subscribe(
-      response => console.log('record inserted: ', response),
-      error => console.log('Error while adding relationship: ', error)
-    );
+  addElementRelationship(from: NgForm){
+    console.log('Post call data: ',this.elementRelationshipArray);
+    this.elementRelationshipArray.forEach(postModelData => {
+      /*this.relationService.addStudyDesignElementRelationship(postModelData).subscribe(
+        response => console.log('record inserted: ', response),
+        error => console.log('Error while adding relationship: ', error)
+      );*/
+    });
     
   }
 
