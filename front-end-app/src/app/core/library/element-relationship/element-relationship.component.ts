@@ -23,6 +23,19 @@ export class ElementRelationshipComponent implements OnInit {
     this.getStudyDesignElementLibrary();
   }
 
+  searchElement(elementName: string){
+    this.relationService.getStudyDesignElementRelationship(elementName).subscribe(
+      response => {
+        console.log('search response: ', response);
+        this.elementRelationshipArray = []
+        this.elementRelationshipArray = response;
+        console.log('response in array: ', this.elementRelationshipArray);
+      },
+      error => console.log('error: ', error)
+    );
+  }
+
+
   getStudyDesignElementLibrary(){
     this.relationService.getStudyDesignElement().subscribe(
       response => {

@@ -62,5 +62,9 @@ export class LibraryService {
     return this.http.post<ElementRelationship>(this.elementRelationshipUrl,element,httpOptions);
   }
 
+  getStudyDesignElementRelationship(elementName: String):Observable<any>{
+    return this.http.get<ElementRelationship>(this.elementRelationshipUrl+"/"+elementName,httpOptions);
+  }
+
 
 }
