@@ -14,7 +14,7 @@ export class ElementRelationshipComponent implements OnInit {
   sdeLibrary$:StudyDesignElement[];
   
   elementRelationship = new ElementRelationship('',null,false,'',null,false);
-  elementRelationshipArray = [];
+  elementRelationshipArray: ElementRelationship[] = [];
 
   constructor(private relationService: LibraryService) { }
 
@@ -30,7 +30,7 @@ export class ElementRelationshipComponent implements OnInit {
         console.log('Length: ', this.sdeLibrary$.length);*/
         this.sdeLibrary$.forEach(element => {
           /*console.log('getStudyDesignElement: ', element),    */      
-          this.elementRelationshipArray.push(new ElementRelationship(element.studyDesignElement,element.elementId,false,element.studyDesignElement,element.elementId,false))        
+          this.elementRelationshipArray.push(new ElementRelationship('', null,false,element.studyDesignElement,element.elementId,false))        
         });
         console.log('after elementRelationshipArray push: ', this.elementRelationshipArray);
       },
@@ -38,8 +38,9 @@ export class ElementRelationshipComponent implements OnInit {
     );
   }
 
-  addElementRelationship(from: NgForm){
-    console.log('Post call data: ',this.elementRelationshipArray);
+  addElementRelationship(form: NgForm){
+    console.log('Post call data in Array: ',this.elementRelationshipArray);
+    console.log("Form data: ", form);
     this.elementRelationshipArray.forEach(postModelData => {
       /*this.relationService.addStudyDesignElementRelationship(postModelData).subscribe(
         response => console.log('record inserted: ', response),
