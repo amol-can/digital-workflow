@@ -33,4 +33,11 @@ public class SDELibraryRelationshipService {
                 .orElseThrow(() -> new Exception("Library Relationship record not found"));
     }
 
+    public void sdeLibraryRelationshipDelete(int relationshipId){
+        sdeLibraryRelationshipRepository.deleteById(relationshipId);
+    }
+
+    // TODO saveAll update for batch updating
+
+
 }

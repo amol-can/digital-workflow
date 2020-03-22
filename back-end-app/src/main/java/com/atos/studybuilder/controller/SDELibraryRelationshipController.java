@@ -36,5 +36,10 @@ public class SDELibraryRelationshipController {
         sdeLibraryRelationshipService.sdeLibraryRelationshipUpdate(sdeLibraryRelationship);
     }
 
+    @DeleteMapping(value = "/id", consumes = {"application/json", "application/xml"})
+    void sdeLibraryRelationshipDelete(@PathVariable int id){
+        sdeLibraryRelationshipService.sdeLibraryRelationshipDelete(id);
+    }
+
 
 }
