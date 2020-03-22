@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./element-relationship.component.css']
 })
 export class ElementRelationshipComponent implements OnInit {
-  rootSdeElement = "";
+  rootSdeElement: string = "";
+  rootSdeElementId: number = null;
   sdeLibrary$:StudyDesignElement[];
   
   elementRelationship = new ElementRelationship('',null,false,'',null,false);
@@ -40,12 +41,13 @@ export class ElementRelationshipComponent implements OnInit {
 
   addElementRelationship(form: NgForm){
     console.log('Post call data in Array: ',this.elementRelationshipArray);
-    console.log("Form data: ", form);
     this.elementRelationshipArray.forEach(postModelData => {
-      /*this.relationService.addStudyDesignElementRelationship(postModelData).subscribe(
+      postModelData.elementType = this.rootSdeElement;
+      console.log("model data: ", postModelData);
+      this.relationService.addStudyDesignElementRelationship(postModelData).subscribe(
         response => console.log('record inserted: ', response),
         error => console.log('Error while adding relationship: ', error)
-      );*/
+      );
     });
     
   }

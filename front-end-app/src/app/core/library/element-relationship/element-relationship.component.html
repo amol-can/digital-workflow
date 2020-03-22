@@ -15,7 +15,7 @@
             them.</small>
           <div class="input-group">
             <select class="custom-select" id="sdElement1" name="sdElement1"
-              ngModel required #sdElement1="ngModel">
+              [(ngModel)]="rootSdeElement">
               <!-- added reference-library call -->
               <option *ngFor="let sde of sdeLibrary$" [ngValue]="sde.studyDesignElement">{{ sde.studyDesignElement}}
               </option>
@@ -23,11 +23,6 @@
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">Search</button>
             </div>
-          </div>
-
-          <!-- TODO need to update to ref model value as well -->
-          <div *ngFor="let item of elementRelationshipArray; let i = index">
-            <input name="sdElement1_{{i}}" [value]="sdElement1.value" [(ngModel)]="item.elementType">
           </div>
 
         
