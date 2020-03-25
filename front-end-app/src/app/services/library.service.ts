@@ -75,5 +75,14 @@ export class LibraryService {
     return this.http.get<ElementRelationship>(this.elementRelationshipUrl+"/"+elementName,httpOptions);
   }
 
+  getStudyDesignElementRelationshipByName(sdElementName: string): Observable<any>{
+    return this.http.get<ElementRelationship>(this.elementRelationshipUrl,{ 
+      headers: new HttpHeaders({'Content-Type':  'application/json'}),
+      params:{
+        elementName: sdElementName
+      },
+    });
+  }
+
 
 }

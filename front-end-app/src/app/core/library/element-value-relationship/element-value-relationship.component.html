@@ -10,11 +10,12 @@
           <p>Form value: {{ valueRelationForm.value | json }}</p>
 
           <!-- SD Element 1 -->
-          <label for="elementToManage">Study Design Element</label>
-          <small id="elementToManage" class="form-text text-muted">Select element to manage the relationship between
+          <label for="element">Study Design Element</label>
+          <small id="element" class="form-text text-muted">Select element to manage the relationship between
             them.</small>
           <div class="input-group">
-            <select class="custom-select" id="element1" name="element1" [(ngModel)]="element1" (change)="onElement1Change($event)">
+            <select class="custom-select" id="element1" name="element1" [(ngModel)]="element1"
+              (change)="onElement1Change($event);getElement2()">
               <!-- added reference-library call -->
               <option *ngFor="let sde of sdeLibrary$" [ngValue]="sde.studyDesignElement">{{ sde.studyDesignElement}}
               </option>
@@ -30,6 +31,39 @@
             </select>
           </div>
 
+          <!-- SD Element 2 -->
+          <label class="form-text" for="elementToManage">Study Design Element-2</label>
+          <small id="elementToManage" class="form-text text-muted">Select study design element relationship to
+            manage</small>
+          <div class="input-group">
+            <select class="custom-select" id="element2" name="element2" [(ngModel)]="element2" (change)="getElement2($event)">
+              <option *ngFor="let sdeRelation of sdeLibraryRelationship$" [ngValue]="sdeRelation.elementType2">
+                {{ sdeRelation.elementType2 }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Display values and relationship -->
+   
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Values</th>
+                <th scope="col">Related</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sd of sdeLibraryValue2$; let i = index">
+                <th scope="row">{{ i }}</th>
+                <td>{{ sd.value }}</td>
+                <td>
+                  *
+                </td>
+              </tr>
+            </tbody>
+          </table>
+ 
 
         </form>
       </div>

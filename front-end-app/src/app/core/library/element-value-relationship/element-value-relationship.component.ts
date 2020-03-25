@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LibraryService } from 'src/app/services/library.service';
 import { StudyDesignElement } from 'src/app/services/StudyDesignElement';
 import { StudyDesignElementValue } from 'src/app/services/model/sde-value-model';
+import { ElementRelationship } from 'src/app/services/model/element-relation-model';
 
 @Component({
   selector: 'app-element-value-relationship',
@@ -12,17 +13,21 @@ export class ElementValueRelationshipComponent implements OnInit {
 
   sdeLibrary$: StudyDesignElement[];
   sdeLibraryValue$: StudyDesignElementValue[];
+  sdeLibraryValue2$: StudyDesignElementValue[];
+  sdeLibraryRelationship$: ElementRelationship[];
 
   element1: string = '';
+  element2: string = '';
 
   constructor(private service: LibraryService) { }
 
   ngOnInit() {
     this.getStudyDesignElementLibrary();
-   // this.getElementValue();
+    // this.getElementValue();
+    this.onElement2Change(Event);
   }
 
-  getStudyDesignElementLibrary(){
+  getStudyDesignElementLibrary() {
     this.service.getStudyDesignElement().subscribe(
       response => {
         this.sdeLibrary$ = response;
@@ -38,7 +43,7 @@ export class ElementValueRelationshipComponent implements OnInit {
     );
   }
 
-  onElement1Change(event: any){
+  onElement1Change(event: any) {
     console.log('event', event.target.value);
     this.service.getStudyDesignElementValueByName(this.element1).subscribe(
       response => {
@@ -46,6 +51,34 @@ export class ElementValueRelationshipComponent implements OnInit {
         this.sdeLibraryValue$ = response;
       },
       error => console.log('error: ', error)
+    );
+  }
+
+  onElement2Change(event: any) {
+    console.log('**element 2 event', event);
+    this.service.getStudyDesignElementValueByName(this.element2).subscribe(
+      response => {
+        console.log('onElement2Change response: ', response);
+        this.sdeLibraryValue2$ = response;
+      },
+      error => console.log('errorn in onElement2Change: ', error)
+    );
+  }
+
+  /** Get second related element on selection of first element */
+  getElement2() {
+    this.service.getStudyDesignElementRelationshipByName(this.element1).subscribe(
+      response => {
+        console.log('element relationship response: ', response);
+        this.sdeLibraryRelationship$ = response;
+        this.sdeLibraryRelationship$.forEach(element => {
+         // remove false entry - non related
+          if (element.relatesTo == false) {
+            this.sdeLibraryRelationship$.pop();
+          }
+        });
+      },
+      error => console.log('error on on getStudyDesignElementRelationshipByName: ', error)
     );
   }
 
