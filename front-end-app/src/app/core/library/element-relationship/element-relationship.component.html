@@ -40,7 +40,7 @@
               <!--*ngFor="let dataArray of elementRelationshipArray"-->
               <tr *ngFor="let er of elementRelationshipArray; let i = index">
                 <td scope="row">
-                  <input name="sdElement2_{{i}}" value="{{ er.elementType2 }}" [(ngModel)]="er.elementType2">
+                  <input name="sdElement2_{{i}}" value="{{ er.elementType2 }}" [(ngModel)]="er.elementType2" readonly>
                 </td>
 
                 <td>

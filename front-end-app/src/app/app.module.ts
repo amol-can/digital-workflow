@@ -16,6 +16,7 @@ import { ElementValueComponent } from './core/library/element-value/element-valu
 import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
 import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
 import { ElementRelationshipComponent } from './core/library/element-relationship/element-relationship.component';
+import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
 
 
 
@@ -33,7 +34,8 @@ import { ElementRelationshipComponent } from './core/library/element-relationshi
     ElementValueComponent,
     AddValueComponent,
     ListValueComponent,
-    ElementRelationshipComponent
+    ElementRelationshipComponent,
+    ElementValueRelationshipComponent
   ],
   imports: [
     BrowserModule,

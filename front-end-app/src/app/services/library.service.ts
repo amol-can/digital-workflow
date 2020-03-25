@@ -25,7 +25,7 @@ export class LibraryService {
 
   constructor(private http: HttpClient) { }
 
-  /* Study Design Element APIs */
+  /* 1. Study Design Element APIs */
 
   addStudyDesignElement(data: StudyDesignElement) : Observable<any> {
     console.log('custome post request data: ',data)
@@ -40,9 +40,18 @@ export class LibraryService {
     return this.http.get<StudyDesignElement>(this.libraryUrl+"/"+id,httpOptions);
   }
 
-  /* Study Design Element Value APIs */
+  /* 2. Study Design Element Value APIs */
   getStudyDesignElementValue(): Observable<any>{
     return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,httpOptions);
+  }
+
+  getStudyDesignElementValueByName(elementName: any):Observable<any>{
+    return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,{ 
+      headers: new HttpHeaders({'Content-Type':  'application/json'}),
+      params:{
+        elementName: elementName
+      },
+    });
   }
 
   addStudyDesignElementValue(data: StudyDesignElementValue): Observable<any>{
@@ -57,7 +66,7 @@ export class LibraryService {
     return this.http.delete(this.libraryValueUrl+"/"+id,httpOptions);
   }
 
-  /* Element relationship APIs */
+  /* 3. Element relationship APIs */
   addStudyDesignElementRelationship(element : ElementRelationship): Observable<any>{
     return this.http.post<ElementRelationship>(this.elementRelationshipUrl,element,httpOptions);
   }
