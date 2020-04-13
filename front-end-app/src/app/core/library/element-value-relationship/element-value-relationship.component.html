@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-12">
       <div class="border" style="padding: 50px;" id="addElement">
-        <form #valueRelationForm="ngForm" (ngSubmit)="addValueRelationship(relationForm)" ngNativeValidate>
+        <form #valueRelationForm="ngForm" (ngSubmit)="addValueRelationship(valueRelationForm)" ngNativeValidate>
 
           <p>Form value: {{ valueRelationForm.value | json }}</p>
 
@@ -25,7 +25,7 @@
           <!-- Value 1 -->
           <label for="element1Value">Value</label>
           <div class="input-group">
-            <select class="custom-select" id="element1Value" name="element1Value" [(ngModel)]="element1Value">
+            <select class="custom-select" id="element1Value" name="element1Value" [(ngModel)]="elementValueRelationship.elementValue">
               <option *ngFor="let sdeValue of sdeLibraryValue$" [ngValue]="sdeValue.value">{{ sdeValue.value }}
               </option>
             </select>
@@ -36,7 +36,8 @@
           <small id="elementToManage" class="form-text text-muted">Select study design element relationship to
             manage</small>
           <div class="input-group">
-            <select class="custom-select" id="element2" name="element2" [(ngModel)]="element2" (change)="getElement2($event)">
+            <select class="custom-select" id="element2" name="element2" [(ngModel)]="element2"
+              (change)="getElement2($event);onElement2Change($event)">
               <option *ngFor="let sdeRelation of sdeLibraryRelationship$" [ngValue]="sdeRelation.elementType2">
                 {{ sdeRelation.elementType2 }}
               </option>
@@ -44,7 +45,7 @@
           </div>
 
           <!-- Display values and relationship -->
-   
+
           <table class="table table-hover">
             <thead>
               <tr>
@@ -54,16 +55,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let sd of sdeLibraryValue2$; let i = index">
+              <tr *ngFor="let sd of elementValueRelationshipArray; let i = index">
                 <th scope="row">{{ i }}</th>
-                <td>{{ sd.value }}</td>
                 <td>
-                  *
+                  <input name="elementValue3_{{i}}" id="elementValue3_{{i}}" value="{{ sd.value  }}" [(ngModel)]="sd.elementValue3" readonly>
+                </td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" id="relatesTo_{{i}}"
+                      name="relatesTo_{{i}}" value="1" aria-label="..." [(ngModel)]="sd.relatesTo">
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
- 
+
+          <button type="submit" class="btn btn-primary">Save</button>
 
         </form>
       </div>

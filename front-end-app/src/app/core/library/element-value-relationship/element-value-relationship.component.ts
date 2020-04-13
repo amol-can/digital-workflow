@@ -3,6 +3,8 @@ import { LibraryService } from 'src/app/services/library.service';
 import { StudyDesignElement } from 'src/app/services/StudyDesignElement';
 import { StudyDesignElementValue } from 'src/app/services/model/sde-value-model';
 import { ElementRelationship } from 'src/app/services/model/element-relation-model';
+import { ElementValueRelationship } from 'src/app/services/model/sde-value-relation-model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-element-value-relationship',
@@ -16,6 +18,9 @@ export class ElementValueRelationshipComponent implements OnInit {
   sdeLibraryValue2$: StudyDesignElementValue[];
   sdeLibraryRelationship$: ElementRelationship[];
 
+  elementValueRelationship = new ElementValueRelationship('', '', '', '', false, '', '');
+  elementValueRelationshipArray: ElementValueRelationship[] = [];
+
   element1: string = '';
   element2: string = '';
 
@@ -24,7 +29,23 @@ export class ElementValueRelationshipComponent implements OnInit {
   ngOnInit() {
     this.getStudyDesignElementLibrary();
     // this.getElementValue();
-    this.onElement2Change(Event);
+    //this.onElement2Change(Event);
+  }
+
+  addValueRelationship(form: NgForm) {
+    console.log('form value: ', form);
+    this.elementValueRelationshipArray.forEach(elements => {
+      elements.elementType = this.element1;
+      elements.elementValue = this.elementValueRelationship.elementValue;
+      if (elements.relatesTo == true) {
+        console.log('true so calling call');
+        this.service.addStudyElementValueRelationship(elements).subscribe(
+          response => console.log('record inserted: ', response),
+          error => console.log('Error while adding relationship: ', error)
+        );
+      }
+    });
+    console.log('final array: ', this.elementValueRelationshipArray);
   }
 
   getStudyDesignElementLibrary() {
@@ -60,6 +81,14 @@ export class ElementValueRelationshipComponent implements OnInit {
       response => {
         console.log('onElement2Change response: ', response);
         this.sdeLibraryValue2$ = response;
+        this.sdeLibraryValue2$.forEach(element => {
+          console.log('getStudyDesignElementValueArray: ', element),
+            this.elementValueRelationshipArray.push(new ElementValueRelationship('', '', '', '', false, element.studyDesignElement, element.value))
+        });
+        console.log('length of Array: ', this.elementValueRelationshipArray.length);
+        //   this.elementRelationshipArray.push(new ElementRelationship('', null,false,element.studyDesignElement,element.elementId,false))        
+        // });
+        // console.log('after elementRelationshipArray push: ', this.elementRelationshipArray);
       },
       error => console.log('errorn in onElement2Change: ', error)
     );
@@ -72,7 +101,7 @@ export class ElementValueRelationshipComponent implements OnInit {
         console.log('element relationship response: ', response);
         this.sdeLibraryRelationship$ = response;
         this.sdeLibraryRelationship$.forEach(element => {
-         // remove false entry - non related
+          // remove false entry - non related
           if (element.relatesTo == false) {
             this.sdeLibraryRelationship$.pop();
           }

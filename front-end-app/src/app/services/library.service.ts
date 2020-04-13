@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { StudyDesignElement } from './StudyDesignElement';
 import { StudyDesignElementValue } from './model/sde-value-model';
 import { ElementRelationship } from './model/element-relation-model';
+import { ElementValueRelationship } from './model/sde-value-relation-model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,6 +23,7 @@ export class LibraryService {
   libraryUrl = "/server/api/v0/reference-library";
   libraryValueUrl = "/server/api/v0/reference-value";
   elementRelationshipUrl = '/server/api/v0/library-relationship';
+  elementValueRelationshipUrl = '/server/api/v0/value-relationship'
 
   constructor(private http: HttpClient) { }
 
@@ -84,5 +86,9 @@ export class LibraryService {
     });
   }
 
+  /* 4. Element Value Relationship */
+  addStudyElementValueRelationship(element : ElementValueRelationship): Observable<any>{
+    return this.http.post<ElementValueRelationship>(this.elementValueRelationshipUrl,element,httpOptions);
+  }
 
 }
