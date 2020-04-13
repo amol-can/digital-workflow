@@ -16,8 +16,12 @@ public class SDEValueController {
     SDEValueService sdeValueService;
 
     @GetMapping(produces = {"application/json", "application/xml"})
-    List<StudyDesignElementValue> studyDesignElementValueIndex() {
-        return sdeValueService.studyDesignElementValueIndex();
+    List<StudyDesignElementValue> studyDesignElementValueIndex(@RequestParam(name = "elementName", defaultValue = "")
+                                                                       String elementName) {
+        if (elementName.isEmpty()) {
+            return sdeValueService.studyDesignElementValueIndex();
+        }
+        return sdeValueService.studyDesignElementValueShow(elementName);
     }
 
     @PostMapping(consumes = {"application/json", "application/xml"})

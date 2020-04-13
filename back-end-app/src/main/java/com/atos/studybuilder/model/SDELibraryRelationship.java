@@ -1,20 +1,27 @@
 package com.atos.studybuilder.model;
 
+import com.atos.studybuilder.utils.SDELibraryRelationshipId;
+
 import javax.persistence.*;
 
 @Entity
+@IdClass(SDELibraryRelationshipId.class)
 public class SDELibraryRelationship {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int libraryRelationshipId;
 
+    @Id
     private String elementType;
     private int elementTypeId; // optional for foreign key
     private boolean relatesTo;
+
+    @Id
     private String elementType2;
     private int elementType2Id; // optional for foreign key
     private boolean mandatory;
+
+    // TODO Create unique key for both element Type
 
     public SDELibraryRelationship() {
     }

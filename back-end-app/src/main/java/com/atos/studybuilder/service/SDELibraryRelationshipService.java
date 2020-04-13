@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SDELibraryRelationshipService {
@@ -17,6 +18,12 @@ public class SDELibraryRelationshipService {
     public List<SDELibraryRelationship> sdeLibraryRelationshipList(){
         List<SDELibraryRelationship> sdeLibraryRelationships = new ArrayList<>();
         sdeLibraryRelationshipRepository.findAll().forEach(sdeLibraryRelationships::add);
+        return sdeLibraryRelationships;
+    }
+
+    public List<SDELibraryRelationship> sdeLibraryRelationshipListByQParam(String elementName ){
+        List<SDELibraryRelationship> sdeLibraryRelationships = new ArrayList<>();
+        sdeLibraryRelationshipRepository.findByElementType(elementName).forEach(sdeLibraryRelationships::add);
         return sdeLibraryRelationships;
     }
 
@@ -32,5 +39,12 @@ public class SDELibraryRelationshipService {
         return sdeLibraryRelationshipRepository.findById(relationshipId)
                 .orElseThrow(() -> new Exception("Library Relationship record not found"));
     }
+
+    public void sdeLibraryRelationshipDelete(int relationshipId){
+        sdeLibraryRelationshipRepository.deleteById(relationshipId);
+    }
+
+    // TODO saveAll update for batch updating
+
 
 }

@@ -1,0 +1,68 @@
+<h4>Manage Study Design Element Relationship</h4>
+<hr>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="border" style="padding: 50px;" id="addElement">
+        <form #relationForm="ngForm" (ngSubmit)="addElementRelationship(relationForm)" ngNativeValidate>
+
+          <!-- <p>Form value: {{ relationForm.value | json }}</p> -->
+
+          <!-- Root element, on click populate existing values -->
+          <label for="elementToManage">Study Design Element</label>
+          <small id="elementToManage" class="form-text text-muted">Select element to manage the relationship between
+            them.</small>
+          <div class="input-group">
+            <select class="custom-select" id="sdElement1" name="sdElement1" [(ngModel)]="rootSdeElement">
+              <!-- added reference-library call -->
+              <option *ngFor="let sde of sdeLibrary$" [ngValue]="sde.studyDesignElement">{{ sde.studyDesignElement}}
+              </option>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="searchElement(rootSdeElement)">Search</button>
+            </div>
+          </div>
+
+
+          <hr>
+
+          <!-- Manage relationship -->
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Element</th>
+                <th scope="col">Related</th>
+                <th scope="col">Mandatory</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--*ngFor="let dataArray of elementRelationshipArray"-->
+              <tr *ngFor="let er of elementRelationshipArray; let i = index">
+                <td scope="row">
+                  <input name="sdElement2_{{i}}" value="{{ er.elementType2 }}" [(ngModel)]="er.elementType2" readonly>
+                </td>
+
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" id="related_{{i}}"
+                      name="related_{{i}}" value="1" aria-label="..." [(ngModel)]="er.relatesTo">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" id="mandatory_{{i}}"
+                      name="mandatory_{{i}}" value="1" aria-label="..." [(ngModel)]="er.mandatory">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="submit" class="btn btn-primary">Save</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

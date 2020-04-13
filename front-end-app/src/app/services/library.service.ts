@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { StudyDesignElement } from './StudyDesignElement';
 import { StudyDesignElementValue } from './model/sde-value-model';
+import { ElementRelationship } from './model/element-relation-model';
+import { ElementValueRelationship } from './model/sde-value-relation-model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,11 +21,13 @@ const httpOptions = {
 export class LibraryService {
 
   libraryUrl = "/server/api/v0/reference-library";
-  libraryValueUrl = "/server/api/v0/reference-value"
+  libraryValueUrl = "/server/api/v0/reference-value";
+  elementRelationshipUrl = '/server/api/v0/library-relationship';
+  elementValueRelationshipUrl = '/server/api/v0/value-relationship'
 
   constructor(private http: HttpClient) { }
 
-  /* Study Design Element APIs */
+  /* 1. Study Design Element APIs */
 
   addStudyDesignElement(data: StudyDesignElement) : Observable<any> {
     console.log('custome post request data: ',data)
@@ -38,9 +42,18 @@ export class LibraryService {
     return this.http.get<StudyDesignElement>(this.libraryUrl+"/"+id,httpOptions);
   }
 
-  /* Study Design Element Value APIs */
+  /* 2. Study Design Element Value APIs */
   getStudyDesignElementValue(): Observable<any>{
     return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,httpOptions);
+  }
+
+  getStudyDesignElementValueByName(elementName: any):Observable<any>{
+    return this.http.get<StudyDesignElementValue>(this.libraryValueUrl,{ 
+      headers: new HttpHeaders({'Content-Type':  'application/json'}),
+      params:{
+        elementName: elementName
+      },
+    });
   }
 
   addStudyDesignElementValue(data: StudyDesignElementValue): Observable<any>{
@@ -53,6 +66,29 @@ export class LibraryService {
 
   studyDesignElementValueDelete(id: any):Observable<any>{
     return this.http.delete(this.libraryValueUrl+"/"+id,httpOptions);
+  }
+
+  /* 3. Element relationship APIs */
+  addStudyDesignElementRelationship(element : ElementRelationship): Observable<any>{
+    return this.http.post<ElementRelationship>(this.elementRelationshipUrl,element,httpOptions);
+  }
+
+  getStudyDesignElementRelationship(elementName: String):Observable<any>{
+    return this.http.get<ElementRelationship>(this.elementRelationshipUrl+"/"+elementName,httpOptions);
+  }
+
+  getStudyDesignElementRelationshipByName(sdElementName: string): Observable<any>{
+    return this.http.get<ElementRelationship>(this.elementRelationshipUrl,{ 
+      headers: new HttpHeaders({'Content-Type':  'application/json'}),
+      params:{
+        elementName: sdElementName
+      },
+    });
+  }
+
+  /* 4. Element Value Relationship */
+  addStudyElementValueRelationship(element : ElementValueRelationship): Observable<any>{
+    return this.http.post<ElementValueRelationship>(this.elementValueRelationshipUrl,element,httpOptions);
   }
 
 }

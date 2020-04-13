@@ -9,6 +9,8 @@ import { EditElementComponent } from './core/library/edit-element/edit-element.c
 import { ElementValueComponent } from './core/library/element-value/element-value.component';
 import { AddValueComponent } from './core/library/element-value/add-value/add-value.component';
 import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
+import { ElementRelationshipComponent } from './core/library/element-relationship/element-relationship.component';
+import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,9 @@ const routes: Routes = [
       { path: "show", component: ListValueComponent },
       { path: "edit/:id", component: AddValueComponent }
     ]
-  }
+  },
+  { path: "element-relationship", component: ElementRelationshipComponent },
+  { path: "element-value-relationship", component: ElementValueRelationshipComponent }
 
 ];
 
