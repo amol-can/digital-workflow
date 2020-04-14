@@ -1,0 +1,62 @@
+<br>
+<div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
+  aria-labelledby="home-tab">
+  <form #studyContent="ngForm" (ngSubmit)="onAddStudyLevelContent(studyContent)" ngNativeValidate>
+
+    <!--
+    <p>Form value: {{ studyContent.value | json }}</p>
+    -->
+
+    <div class="form-group">
+      <label for="protocolId">Protocol Id</label>
+      <input type="text" class="form-control" id="protocolId" name="protocolId"
+        [(ngModel)]="studyLevelContent.protocolId" required>
+    </div>
+
+    <label for="theropotic-area">Theropotic Area</label>
+    <div class="input-group">
+      <select class="custom-select" id="theropotic-area" name="theropotic-area"
+        [(ngModel)]="studyLevelContent.therapeuticArea" (change)="getElementValueRelationship($event)">
+        <option *ngFor="let theropotic of theropoticArea" [ngValue]="theropotic">{{ theropotic }}
+        </option>
+      </select>
+    </div>
+
+    <label for="indication">Indication</label>
+    <div class="input-group">
+      <select class="custom-select" id="indication" name="indication" [(ngModel)]="studyLevelContent.indication">
+        <option *ngFor="let indicationVal of elementValueRelationshipArray" [ngValue]="indicationVal.elementValue3">
+          {{ indicationVal.elementValue3}}
+        </option>
+      </select>
+    </div>
+
+    <label for="study-phase">Study Phase</label>
+    <div class="input-group">
+      <select class="custom-select" id="study-phase" name="study-phase" [(ngModel)]="studyLevelContent.studyPhase">
+        <option *ngFor="let phase of studyPhase" [ngValue]="phase">{{ phase }}
+        </option>
+      </select>
+    </div>
+
+    <label for="study-type">Study Type</label>
+    <div class="input-group">
+      <select class="custom-select" id="study-type" name="study-type" [(ngModel)]="studyLevelContent.studyType">
+        <option *ngFor="let type of studyType" [ngValue]="type">{{ type }}
+        </option>
+      </select>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <!-- Error handling -->
+    <div [hidden]="!postSuccess" class="alert alert-success">
+      {{ postSuccessMessage }}
+    </div>
+    <div [hidden]="!postError" class="alert alert-danger">
+      {{ postErrorMessage }}
+    </div>
+
+  </form>
+</div>

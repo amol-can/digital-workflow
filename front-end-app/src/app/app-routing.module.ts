@@ -11,11 +11,11 @@ import { AddValueComponent } from './core/library/element-value/add-value/add-va
 import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
 import { ElementRelationshipComponent } from './core/library/element-relationship/element-relationship.component';
 import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
+import { AddStudyContentComponent } from './core/study-level-content/add-study-content/add-study-content.component';
 
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "study-level", component: StudyLevelContentComponent },
   {
     path: "library-management", component: LibraryComponent,
     children: [
@@ -36,7 +36,15 @@ const routes: Routes = [
     ]
   },
   { path: "element-relationship", component: ElementRelationshipComponent },
-  { path: "element-value-relationship", component: ElementValueRelationshipComponent }
+  { path: "element-value-relationship", component: ElementValueRelationshipComponent },
+
+  {
+    path: "study-level", component: StudyLevelContentComponent,
+    children: [
+      { path: "", component: AddStudyContentComponent },
+      { path: "add", component: AddStudyContentComponent },
+    ]
+  }
 
 ];
 

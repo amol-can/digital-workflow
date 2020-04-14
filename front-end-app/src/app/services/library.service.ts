@@ -3,7 +3,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { StudyDesignElement } from './StudyDesignElement';
 import { StudyDesignElementValue } from './model/sde-value-model';
 import { ElementRelationship } from './model/element-relation-model';
@@ -89,6 +88,10 @@ export class LibraryService {
   /* 4. Element Value Relationship */
   addStudyElementValueRelationship(element : ElementValueRelationship): Observable<any>{
     return this.http.post<ElementValueRelationship>(this.elementValueRelationshipUrl,element,httpOptions);
+  }
+
+  getStudyElementValueRelationship():Observable<any>{
+    return this.http.get<ElementValueRelationship>(this.elementValueRelationshipUrl,httpOptions);
   }
 
 }
