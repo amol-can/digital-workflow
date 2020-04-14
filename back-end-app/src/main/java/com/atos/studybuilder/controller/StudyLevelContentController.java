@@ -25,8 +25,9 @@ public class StudyLevelContentController {
         return studyLevelContentService.studyLevelContentSave(studyLevelContent);
     }
 
-    @DeleteMapping
-    boolean studyLevelContentDelete(String protocolId){
+    @DeleteMapping(value = "/{protocolId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    boolean studyLevelContentDelete(@PathVariable String protocolId){
         return studyLevelContentService.studyLevelContentDelete(protocolId);
     }
 
