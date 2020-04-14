@@ -25,8 +25,8 @@
     <label for="indication">Indication</label>
     <div class="input-group">
       <select class="custom-select" id="indication" name="indication" [(ngModel)]="studyLevelContent.indication">
-        <option *ngFor="let indicationVal of elementValueRelationshipArray" [ngValue]="indicationVal.elementValue3">
-          {{ indicationVal.elementValue3}}
+        <option *ngFor="let ind of indicationArray" [ngValue]="ind">
+          {{ ind }}
         </option>
       </select>
     </div>

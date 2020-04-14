@@ -5,6 +5,7 @@ import { ElementValueRelationship } from 'src/app/services/model/sde-value-relat
 import { StudyLevelContent } from 'src/app/services/model/study-level-content-model';
 import { NgForm } from '@angular/forms';
 import { StudyLevelContentService } from 'src/app/services/study-level-content.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-study-content',
@@ -20,8 +21,11 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   studyLevelContent = new StudyLevelContent('', '', '', '', '');
 
   theropoticArea = [];
+  indicationArray = [];
   studyPhase = [];
   studyType = [];
+
+  urlParam = '';
 
   /* Properties regarding error handling */
 
@@ -30,7 +34,7 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   postErrorMessage = '';
   postSuccessMessage = '';
 
-  constructor(private service: LibraryService, private studyService: StudyLevelContentService) { }
+  constructor(private service: LibraryService, private studyService: StudyLevelContentService,private _router: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -39,6 +43,7 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.getElementValues();
     console.log('studyPhase: ', this.studyPhase);
+    this.editGivenProtocolId();
   }
 
   onAddStudyLevelContent(form: NgForm) {
@@ -53,6 +58,19 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
         this.onHttpError(error);
       },
     );
+  }
+
+  // Edit
+  editGivenProtocolId(){
+    this.urlParam = this._router.snapshot.paramMap.get("id");
+    console.log('edit route param: ', this.urlParam );
+    if(this.urlParam != null && this.urlParam !=""){
+      console.log('looking for protocol id: ', this.urlParam)
+      this.studyService.findStudyLevelContentById(this.urlParam).subscribe(
+        result => this.studyLevelContent = result,
+        error => console.log(error)
+      );
+    }
   }
 
   getElementValues() {
@@ -84,7 +102,10 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
         this.elementValueRelationshipArray = response;
         this.elementValueRelationshipArray.forEach(element => {
           // remove from array if elementValue and type does not match
-          if (element.elementValue == theropoticAreaValue && element.elementType3 == 'Indication') { }
+          this.indicationArray.splice;
+          if (element.elementValue == theropoticAreaValue && element.elementType3 == 'Indication') { 
+            this.indicationArray.push(element.elementValue3);
+          }
           else {
             this.elementValueRelationshipArray.pop();
           }

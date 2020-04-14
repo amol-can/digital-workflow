@@ -26,4 +26,12 @@ export class StudyLevelContentService {
     return this.http.get<StudyLevelContent>(this.studyLevelContentUrl,httpOptions);
   }
 
+  findStudyLevelContentById(id: any): Observable<any>{
+    return this.http.get<StudyLevelContent>(this.studyLevelContentUrl+"/"+id,httpOptions);
+  }
+
+  deleteStudyLevelContentById(id: any): Observable<any>{
+    return this.http.delete<StudyLevelContent>(this.studyLevelContentUrl+'/'+id,httpOptions);
+  }
+
 }
