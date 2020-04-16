@@ -14,7 +14,7 @@ public class ObjectiveDataController {
     @Autowired
     ObjectiveDataService objectiveDataService;
 
-    @GetMapping
+    @GetMapping(produces = {"application/json","application/xml"})
     List<ObjectiveData> objectiveDataList(){
         return objectiveDataService.objectiveDataList();
     }

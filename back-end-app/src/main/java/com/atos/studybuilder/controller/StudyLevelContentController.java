@@ -14,7 +14,7 @@ public class StudyLevelContentController {
     @Autowired
     StudyLevelContentService studyLevelContentService;
 
-    @GetMapping
+    @GetMapping(produces = {"application/json","application/xml"})
     List<StudyLevelContent> studyLevelContentList(){
         return studyLevelContentService.studyLevelContentList();
     }
