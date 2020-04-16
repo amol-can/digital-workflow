@@ -11,11 +11,15 @@ import { AddValueComponent } from './core/library/element-value/add-value/add-va
 import { ListValueComponent } from './core/library/element-value/list-value/list-value.component';
 import { ElementRelationshipComponent } from './core/library/element-relationship/element-relationship.component';
 import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
+import { AddStudyContentComponent } from './core/study-level-content/add-study-content/add-study-content.component';
+import { ListStudyContentComponent } from './core/study-level-content/list-study-content/list-study-content.component';
+import { ProtocolLevelContentComponent } from './core/protocol-level-content/protocol-level-content.component';
+import { AddProtocolContentComponent } from './core/protocol-level-content/add-protocol-content/add-protocol-content.component';
+import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
 
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "study-level", component: StudyLevelContentComponent },
   {
     path: "library-management", component: LibraryComponent,
     children: [
@@ -36,7 +40,27 @@ const routes: Routes = [
     ]
   },
   { path: "element-relationship", component: ElementRelationshipComponent },
-  { path: "element-value-relationship", component: ElementValueRelationshipComponent }
+  { path: "element-value-relationship", component: ElementValueRelationshipComponent },
+
+  {
+    path: "study-level", component: StudyLevelContentComponent,
+    children: [
+      { path: "", component: AddStudyContentComponent },
+      { path: "add", component: AddStudyContentComponent },
+      { path: "show", component: ListStudyContentComponent },
+      { path: "edit/:id", component: AddStudyContentComponent },
+    ]
+  },
+
+  {
+    path: "protocol-level", component: ProtocolLevelContentComponent,
+    children: [
+      { path: "", component: AddProtocolContentComponent },
+      { path: "add", component: AddProtocolContentComponent },
+      { path: "show", component: ListProtocolContentComponent },
+      { path: "edit/:id", component: AddProtocolContentComponent },
+    ]
+  }
 
 ];
 
