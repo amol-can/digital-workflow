@@ -1,0 +1,119 @@
+<br>
+<div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
+  aria-labelledby="home-tab">
+
+
+
+  <form #protocolContent="ngForm" (ngSubmit)="onAddProtocolLevelContent(protocolContent)" ngNativeValidate>
+
+    <!-- Search by element-->
+    <label for="protocolId">Protocol Id</label>
+    <div class="input-group">
+      <select class="custom-select" id="protocolId" name="protocolId" [(ngModel)]="protocolLevelContent.protocolId"
+        (change)="getStudyProtocols($event)">
+
+        <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
+          {{ studyContent.protocolId }} </option>
+
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button"
+          (click)="getStudyProtocols($event)">Search</button>
+      </div>
+    </div>
+
+
+
+    <!-- <p>Form value: {{ protocolContent.value | json }}</p> -->
+
+    <div class="form-group">
+      <label for="acronym">Acronym</label>
+      <input type="text" class="form-control" id="acronym" name="acronym" [(ngModel)]="protocolLevelContent.acronym" required>
+    </div>
+
+    <div class="form-group">
+      <label for="protocolTitle">Protocol Title</label>
+      <textarea class="form-control" id="protocolTitle" name="protocolTitle" rows="2" [(ngModel)]="protocolLevelContent.protocolTitle"
+        required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="protocolShortTitle">Protocol Short Title</label>
+      <input type="text" class="form-control" id="protocolShortTitle" name="protocolShortTitle"
+        [(ngModel)]="protocolLevelContent.protocolShortTitle">
+    </div>
+
+    <!-- Arm -->
+    <div class="form-group">
+      <label for="armName">Arm Name</label>
+      <input type="text" class="form-control" id="armName" name="armName" [(ngModel)]="protocolLevelContent.armName">
+    </div>
+
+    <label for="armType">Arm Type</label>
+    <div class="input-group">
+      <select class="custom-select" id="armType" name="armType" [(ngModel)]="protocolLevelContent.armType">
+        <option *ngFor="let arm of armTypeArray" [ngValue]="arm">{{ arm }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="armDescription">Arm Description</label>
+      <input type="text" class="form-control" id="armDescription" name="armDescription" [(ngModel)]="protocolLevelContent.armDescription">
+    </div>
+
+    <!-- Interventation -->
+    <label for="interventionModel">Intervention Model</label>
+    <div class="input-group">
+      <select class="custom-select" id="interventionModel" name="interventionModel" [(ngModel)]="protocolLevelContent.interventionModel">
+        <option *ngFor="let interModel of interventionModelArray" [ngValue]="interModel">{{ interModel }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="interventionName">Intervention Name</label>
+      <input type="text" class="form-control" id="interventionName" name="interventionName"
+        [(ngModel)]="protocolLevelContent.interventionName">
+    </div>
+
+    <div class="form-group">
+      <label for="interventionDescription">Intervention Description</label>
+      <input type="text" class="form-control" id="interventionDescription" name="interventionDescription"
+        [(ngModel)]="protocolLevelContent.interventionDescription">
+    </div>
+
+    <label for="interventionType">Intervention Type</label>
+    <div class="input-group">
+      <select class="custom-select" id="interventionType" name="interventionType" [ngModel]="interventionType">
+        <option *ngFor="let interType of interventionTypeArray" [(ngValue)]="protocolLevelContent.interType">{{ interType }}
+        </option>
+      </select>
+    </div>
+
+    <label for="masking">Masking</label>
+    <div class="input-group">
+      <select class="custom-select" id="masking" name="masking" [(ngModel)]="protocolLevelContent.masking">
+        <option *ngFor="let masking of maskingArray" [ngValue]="masking">{{ masking }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfArms">Number Of Arms</label>
+      <input type="number" class="form-control" id="numberOfArms" name="numberOfArms" [(ngModel)]="protocolLevelContent.numberOfArms">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <!-- Error handling -->
+    <div [hidden]="!postSuccess" class="alert alert-success">
+      {{ postSuccessMessage }}
+    </div>
+    <div [hidden]="!postError" class="alert alert-danger">
+      {{ postErrorMessage }}
+    </div>
+
+  </form>
+</div>

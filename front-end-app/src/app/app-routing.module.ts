@@ -13,6 +13,9 @@ import { ElementRelationshipComponent } from './core/library/element-relationshi
 import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
 import { AddStudyContentComponent } from './core/study-level-content/add-study-content/add-study-content.component';
 import { ListStudyContentComponent } from './core/study-level-content/list-study-content/list-study-content.component';
+import { ProtocolLevelContentComponent } from './core/protocol-level-content/protocol-level-content.component';
+import { AddProtocolContentComponent } from './core/protocol-level-content/add-protocol-content/add-protocol-content.component';
+import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
 
 
 const routes: Routes = [
@@ -44,8 +47,18 @@ const routes: Routes = [
     children: [
       { path: "", component: AddStudyContentComponent },
       { path: "add", component: AddStudyContentComponent },
-      { path:"show", component: ListStudyContentComponent},
+      { path: "show", component: ListStudyContentComponent },
       { path: "edit/:id", component: AddStudyContentComponent },
+    ]
+  },
+
+  {
+    path: "protocol-level", component: ProtocolLevelContentComponent,
+    children: [
+      { path: "", component: AddProtocolContentComponent },
+      { path: "add", component: AddProtocolContentComponent },
+      { path: "show", component: ListProtocolContentComponent },
+      { path: "edit/:id", component: AddProtocolContentComponent },
     ]
   }
 

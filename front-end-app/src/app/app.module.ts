@@ -19,6 +19,9 @@ import { ElementRelationshipComponent } from './core/library/element-relationshi
 import { ElementValueRelationshipComponent } from './core/library/element-value-relationship/element-value-relationship.component';
 import { AddStudyContentComponent } from './core/study-level-content/add-study-content/add-study-content.component';
 import { ListStudyContentComponent } from './core/study-level-content/list-study-content/list-study-content.component';
+import { ProtocolLevelContentComponent } from './core/protocol-level-content/protocol-level-content.component';
+import { AddProtocolContentComponent } from './core/protocol-level-content/add-protocol-content/add-protocol-content.component';
+import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
 
 
 
@@ -39,7 +42,10 @@ import { ListStudyContentComponent } from './core/study-level-content/list-study
     ElementRelationshipComponent,
     ElementValueRelationshipComponent,
     AddStudyContentComponent,
-    ListStudyContentComponent
+    ListStudyContentComponent,
+    ProtocolLevelContentComponent,
+    AddProtocolContentComponent,
+    ListProtocolContentComponent
   ],
   imports: [
     BrowserModule,
