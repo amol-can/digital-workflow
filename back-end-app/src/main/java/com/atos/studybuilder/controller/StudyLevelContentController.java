@@ -19,7 +19,7 @@ public class StudyLevelContentController {
         return studyLevelContentService.studyLevelContentList();
     }
 
-    @PostMapping
+    @PostMapping(consumes = {"application/json","application/xml"})
     @ResponseStatus(HttpStatus.CREATED)
     boolean studyLevelContentList(@RequestBody StudyLevelContent studyLevelContent) throws Exception {
         return studyLevelContentService.studyLevelContentSave(studyLevelContent);
