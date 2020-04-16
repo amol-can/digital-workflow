@@ -11,18 +11,18 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody *ngFor="let studyContent of protocolLevelContentArray">
+    <tbody *ngFor="let  protocolContent of protocolLevelContentArray">
       <tr>
-        <th scope="row">{{ studyContent.protocolId }}</th>
-        <td>{{studyContent.acronym }}</td>
-        <td>{{studyContent.protocolTitle }}</td>
-        <td>{{studyContent.armName }}</td>
-        <td>{{studyContent.masking }}</td>
+        <th scope="row">{{  protocolContent.protocolId }}</th>
+        <td>{{ protocolContent.acronym }}</td>
+        <td>{{ protocolContent.protocolTitle }}</td>
+        <td>{{ protocolContent.armName }}</td>
+        <td>{{ protocolContent.masking }}</td>
         <td>
           <button type="button" class="btn btn-outline-info"
-            (click)="editElement(studyContent.protocolId)">Edit</button>
+            (click)="editElement( protocolContent.protocolId)">Edit</button>
           <button type="button" class="btn btn-outline-danger"
-            (click)="deleteContent(studyContent.protocolId)">Delete</button>
+            (click)="deleteContent( protocolContent.protocolId)">Delete</button>
         </td>
       </tr>
     </tbody>

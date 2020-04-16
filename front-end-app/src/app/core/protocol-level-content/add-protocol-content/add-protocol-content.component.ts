@@ -37,8 +37,7 @@ export class AddProtocolContentComponent implements OnInit, AfterViewInit {
     private protocolService: ProtocolLevelContentService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getStudyLevelContent();
-    
+    this.getStudyLevelContent();    
   }
 
   ngAfterViewInit():void{

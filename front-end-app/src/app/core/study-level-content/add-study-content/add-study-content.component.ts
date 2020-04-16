@@ -95,7 +95,8 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   }
 
   getElementValueRelationship(event: any) {
-    var theropoticAreaValue: string = event.target.innerText;
+    var theropoticAreaValue: string = this.studyLevelContent.therapeuticArea;
+    
     this.service.getStudyElementValueRelationship().subscribe(
       response => {
         console.log('getElementValueRelationship response: ', response);
@@ -103,12 +104,13 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
         this.elementValueRelationshipArray.forEach(element => {
           // remove from array if elementValue and type does not match
           this.indicationArray.splice;
-          if (element.elementValue == theropoticAreaValue && element.elementType3 == 'Indication') { 
+          if (element.elementValue.includes(theropoticAreaValue) && element.elementType3.includes('Indication')) { 
             this.indicationArray.push(element.elementValue3);
           }
           else {
             this.elementValueRelationshipArray.pop();
           }
+          debugger;
         });
       },
       error => console.log('error while calling getElementValueRelationship: ', error)
