@@ -16,6 +16,8 @@ import { ListStudyContentComponent } from './core/study-level-content/list-study
 import { ProtocolLevelContentComponent } from './core/protocol-level-content/protocol-level-content.component';
 import { AddProtocolContentComponent } from './core/protocol-level-content/add-protocol-content/add-protocol-content.component';
 import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
+import { ObjectiveComponent } from './core/objective/objective.component';
+import { AddObjectiveComponent } from './core/objective/add-objective/add-objective.component';
 
 
 const routes: Routes = [
@@ -59,6 +61,13 @@ const routes: Routes = [
       { path: "add", component: AddProtocolContentComponent },
       { path: "show", component: ListProtocolContentComponent },
       { path: "edit/:id", component: AddProtocolContentComponent },
+    ]
+  },
+  {
+    path:"objective", component:ObjectiveComponent,
+    children:[
+      { path: "", component: AddObjectiveComponent },
+      { path: "add", component: AddObjectiveComponent },
     ]
   }
 

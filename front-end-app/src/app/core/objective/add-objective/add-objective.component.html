@@ -1,0 +1,24 @@
+<br>
+<div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
+  aria-labelledby="home-tab">
+  <form #objectiveForm="ngForm" (ngSubmit)="onAddobjective(objectiveForm)" ngNativeValidate>
+
+    <!--
+    <p>Form value: {{ objectiveForm.value | json }}</p>
+    -->
+
+     <!-- Search by element-->
+     <label for="searchProtocolId">Search for existing protocol Id</label>
+     <div class="input-group">
+       <select class="custom-select" id="searchProtocolId" name="searchProtocolId" 
+         (change)="getStudyProtocolsDetails($event)">
+ 
+         <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
+           {{ studyContent.protocolId }} </option>
+ 
+       </select>
+       <div class="input-group-append">
+         <button class="btn btn-outline-secondary" type="button"
+           (click)="getStudyProtocolsDetails($event)">Search</button>
+       </div>
+     </div>

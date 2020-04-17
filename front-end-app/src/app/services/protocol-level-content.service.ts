@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProtocolLevelContentModel } from './model/protocol-level-content.model';
 import { Observable } from 'rxjs';
+import { Objective } from './model/objective.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,8 +15,11 @@ const httpOptions = {
 })
 export class ProtocolLevelContentService {
   protocolLevelContentUrl = '/server/api/v0/protocol-level';
+  objectiveUrl = '/server/api/v0/objective-data';
 
   constructor(private http: HttpClient) { }
+
+  // 1. Protocol Level
 
   addProtocolLevelContent(element : ProtocolLevelContentModel): Observable<any>{
     return this.http.post<ProtocolLevelContentModel>(this.protocolLevelContentUrl,element,httpOptions);
@@ -31,6 +35,23 @@ export class ProtocolLevelContentService {
 
   deleteProtocolLevelContentById(id: any): Observable<any>{
     return this.http.delete<ProtocolLevelContentModel>(this.protocolLevelContentUrl+'/'+id,httpOptions);
+  }
+
+  // 2. Objective
+  addObjective(element : Objective): Observable<any>{
+    return this.http.post<Objective>(this.objectiveUrl,element,httpOptions);
+  }
+
+  getObjective():Observable<any>{
+    return this.http.get<Objective>(this.objectiveUrl,httpOptions);
+  }
+
+  findObjectiveById(id: any): Observable<any>{
+    return this.http.get<Objective>(this.objectiveUrl+"/"+id,httpOptions);
+  }
+
+  deleteObjectiveById(id: any): Observable<any>{
+    return this.http.delete<Objective>(this.objectiveUrl+'/'+id,httpOptions);
   }
 
   
