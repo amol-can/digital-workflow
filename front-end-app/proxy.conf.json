@@ -1,6 +1,6 @@
 {
 	"/server": {
-		"target": "http://localhost:8080",
+		"target": "http://studybuilderapi-env.eba-yk9bahrx.us-east-2.elasticbeanstalk.com:8081",
 		"secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
