@@ -18,6 +18,7 @@ import { AddProtocolContentComponent } from './core/protocol-level-content/add-p
 import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
 import { ObjectiveComponent } from './core/objective/objective.component';
 import { AddObjectiveComponent } from './core/objective/add-objective/add-objective.component';
+import { ListObjectiveComponent } from './core/objective/list-objective/list-objective.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,8 @@ const routes: Routes = [
     children:[
       { path: "", component: AddObjectiveComponent },
       { path: "add", component: AddObjectiveComponent },
+      { path: "show", component: ListObjectiveComponent },
+      { path: "edit/:id", component: AddObjectiveComponent },
     ]
   }
 

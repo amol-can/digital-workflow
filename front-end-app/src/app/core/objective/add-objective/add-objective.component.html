@@ -1,24 +1,69 @@
 <br>
 <div class="tab-pane fade show active border" style="padding: 50px;" id="addElement" role="tabpanel"
-  aria-labelledby="home-tab">
-  <form #objectiveForm="ngForm" (ngSubmit)="onAddobjective(objectiveForm)" ngNativeValidate>
+    aria-labelledby="home-tab">
+    <form #objectiveForm="ngForm" (ngSubmit)="onAddobjective(objectiveForm)" ngNativeValidate>
 
-    <!--
+        <!--
     <p>Form value: {{ objectiveForm.value | json }}</p>
     -->
 
-     <!-- Search by element-->
-     <label for="searchProtocolId">Search for existing protocol Id</label>
-     <div class="input-group">
-       <select class="custom-select" id="searchProtocolId" name="searchProtocolId" 
-         (change)="getStudyProtocolsDetails($event)">
- 
-         <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
-           {{ studyContent.protocolId }} </option>
- 
-       </select>
-       <div class="input-group-append">
-         <button class="btn btn-outline-secondary" type="button"
-           (click)="getStudyProtocolsDetails($event)">Search</button>
-       </div>
-     </div>
+        <!-- Search by element-->
+        <label for="searchProtocolId">Select Protocol Id</label>
+        <div class="input-group">
+            <select class="custom-select" id="searchProtocolId" name="searchProtocolId" [(ngModel)]="objectiveModel.protocolId"
+                (change)="getObjectiveData($event)">
+
+                <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
+                    {{ studyContent.protocolId }} </option>
+
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button"
+                    (click)="getObjectiveData($event)">Search</button>
+            </div>
+        </div>
+
+        <!-- Objective Library -->
+        <label for="libraryRef">Select from objective full text library</label>
+        <div class="input-group">
+            <select class="custom-select" id="libraryRef" name="libraryRef"
+                [(ngModel)]="objectiveModel.objectiveFullText">
+                <option *ngFor="let library of libraryValueArray" [ngValue]="library.value">
+                    {{ library.value }}
+                </option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="libraryFullText">Library Full Text:</label>
+            <textarea class="form-control" rows="4" id="libraryFullText" name="libraryFullText"
+                [(ngModel)]="objectiveModel.objectiveFullText"
+                placeholder="initial value will be pull from library by selecting above dropdown"
+                required>{{ objectiveModel.objectiveFullText }}</textarea>
+        </div>
+
+        <!-- Objective Level -->
+        <label for="objectiveLevel">Select from objective full text library</label>
+        <div class="input-group">
+            <select class="custom-select" id="objectiveLevel" name="objectiveLevel"
+                [(ngModel)]="objectiveModel.objectiveLevel">
+                <option>Primary</option>
+                <option>Secondary</option>
+            </select>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Save</button>
+    
+        <!-- Error handling -->
+        <div [hidden]="!postSuccess" class="alert alert-success">
+          {{ postSuccessMessage }}
+        </div>
+        <div [hidden]="!postError" class="alert alert-danger">
+          {{ postErrorMessage }}
+        </div>
+
+
+    </form>
+</div>

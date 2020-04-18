@@ -24,6 +24,7 @@ import { AddProtocolContentComponent } from './core/protocol-level-content/add-p
 import { ListProtocolContentComponent } from './core/protocol-level-content/list-protocol-content/list-protocol-content.component';
 import { ObjectiveComponent } from './core/objective/objective.component';
 import { AddObjectiveComponent } from './core/objective/add-objective/add-objective.component';
+import { ListObjectiveComponent } from './core/objective/list-objective/list-objective.component';
 
 
 
@@ -49,7 +50,8 @@ import { AddObjectiveComponent } from './core/objective/add-objective/add-object
     AddProtocolContentComponent,
     ListProtocolContentComponent,
     ObjectiveComponent,
-    AddObjectiveComponent
+    AddObjectiveComponent,
+    ListObjectiveComponent
   ],
   imports: [
     BrowserModule,

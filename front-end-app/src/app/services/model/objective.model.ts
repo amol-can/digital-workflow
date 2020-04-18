@@ -6,7 +6,7 @@ export class Objective {
         public protocolId: string,
         public objectiveFullText: string,
         public objectiveLevel: string,
-        public studyLevelContent: StudyLevelContent
+        //public studyLevelContent: StudyLevelContent
 
     ) { }
 }
