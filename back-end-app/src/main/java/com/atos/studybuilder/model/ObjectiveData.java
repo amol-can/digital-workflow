@@ -10,7 +10,7 @@ public class ObjectiveData {
     private int id;
     private String objectiveFullText;
     private String objectiveLevel;
-    private int protocolId;
+    private String protocolId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "protocolId", referencedColumnName = "protocolId",insertable = false,updatable = false)
@@ -18,7 +18,7 @@ public class ObjectiveData {
 
     public ObjectiveData(){}
 
-    public ObjectiveData(int id, String objectiveFullText, String objectiveLevel, int protocolId) {
+    public ObjectiveData(int id, String objectiveFullText, String objectiveLevel, String protocolId) {
         this.id = id;
         this.objectiveFullText = objectiveFullText;
         this.objectiveLevel = objectiveLevel;
@@ -57,11 +57,11 @@ public class ObjectiveData {
         this.studyLevelContent = studyLevelContent;
     }
 
-    public int getProtocolId() {
+    public String getProtocolId() {
         return protocolId;
     }
 
-    public void setProtocolId(int protocolId) {
+    public void setProtocolId(String protocolId) {
         this.protocolId = protocolId;
     }
 
