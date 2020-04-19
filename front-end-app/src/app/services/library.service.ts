@@ -7,6 +7,7 @@ import { StudyDesignElement } from './StudyDesignElement';
 import { StudyDesignElementValue } from './model/sde-value-model';
 import { ElementRelationship } from './model/element-relation-model';
 import { ElementValueRelationship } from './model/sde-value-relation-model';
+import * as appConfig from '../shared/config/globalConfig';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,10 +23,11 @@ const httpOptions = {
 })
 export class LibraryService {
 
-  libraryUrl = "/server/api/v0/reference-library";
-  libraryValueUrl = "/server/api/v0/reference-value";
-  elementRelationshipUrl = '/server/api/v0/library-relationship';
-  elementValueRelationshipUrl = '/server/api/v0/value-relationship'
+
+  libraryUrl = appConfig.BASE_API_URL+'reference-library';
+  libraryValueUrl = appConfig.BASE_API_URL+'reference-value';
+  elementRelationshipUrl = appConfig+'library-relationship';
+  elementValueRelationshipUrl = appConfig+'value-relationship'
 
   constructor(private http: HttpClient) { }
 
