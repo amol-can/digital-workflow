@@ -10,7 +10,9 @@ public class ObjectiveData {
     private int id;
     private String objectiveFullText;
     private String objectiveLevel;
-    private int protocolId;
+    private String protocolId;
+    private String endPointFullText;
+    private String primaryTimePoint;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "protocolId", referencedColumnName = "protocolId",insertable = false,updatable = false)
@@ -18,11 +20,13 @@ public class ObjectiveData {
 
     public ObjectiveData(){}
 
-    public ObjectiveData(int id, String objectiveFullText, String objectiveLevel, int protocolId) {
+    public ObjectiveData(int id, String objectiveFullText, String objectiveLevel, String protocolId, String endPointFullText, String primaryTimePoint) {
         this.id = id;
         this.objectiveFullText = objectiveFullText;
         this.objectiveLevel = objectiveLevel;
         this.protocolId = protocolId;
+        this.endPointFullText = endPointFullText;
+        this.primaryTimePoint = primaryTimePoint;
     }
 
     public int getId() {
@@ -57,12 +61,28 @@ public class ObjectiveData {
         this.studyLevelContent = studyLevelContent;
     }
 
-    public int getProtocolId() {
+    public String getProtocolId() {
         return protocolId;
     }
 
-    public void setProtocolId(int protocolId) {
+    public void setProtocolId(String protocolId) {
         this.protocolId = protocolId;
+    }
+
+    public String getEndPointFullText() {
+        return endPointFullText;
+    }
+
+    public void setEndPointFullText(String endPointFullText) {
+        this.endPointFullText = endPointFullText;
+    }
+
+    public String getPrimaryTimePoint() {
+        return primaryTimePoint;
+    }
+
+    public void setPrimaryTimePoint(String primaryTimePoint) {
+        this.primaryTimePoint = primaryTimePoint;
     }
 
     @Override
@@ -71,6 +91,9 @@ public class ObjectiveData {
                 "id=" + id +
                 ", objectiveFullText='" + objectiveFullText + '\'' +
                 ", objectiveLevel='" + objectiveLevel + '\'' +
+                ", protocolId='" + protocolId + '\'' +
+                ", endPointFullText='" + endPointFullText + '\'' +
+                ", primaryTimePoint='" + primaryTimePoint + '\'' +
                 ", studyLevelContent=" + studyLevelContent +
                 '}';
     }

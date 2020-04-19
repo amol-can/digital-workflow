@@ -1,0 +1,42 @@
+<br>
+<div class="border" style="padding: 50px;">
+
+    <!-- Search by element-->
+    <div class="input-group">
+        <select class="custom-select" id="searchByElement">
+            <option selected>Choose...</option>
+
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
+    </div>
+
+    <br>
+
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Protocol Id</th>
+                <th scope="col">Objective Full Text</th>
+                <th scope="col">Objective Level</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let objective of objectiveArray">
+            <tr>
+                <th scope="row">{{ objective.protocolId }}</th>
+                <td>{{objective.objectiveFullText }}</td>
+                <td>{{objective.objectiveLevel }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-info"
+                        (click)="editElement(objective.id)">Edit</button>
+                    <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteContent(objective.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -20,8 +20,12 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
 
   studyLevelContent = new StudyLevelContent('', '', '', '', '');
 
+  // for Id search dropdown
+  studyLevelContentArray: StudyLevelContent[];
+  protocolIdArray = [];
+
   theropoticArea = [];
-  indicationArray = [];
+  indicationArray: string[] = [];
   studyPhase = [];
   studyType = [];
 
@@ -34,16 +38,40 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   postErrorMessage = '';
   postSuccessMessage = '';
 
-  constructor(private service: LibraryService, private studyService: StudyLevelContentService,private _router: ActivatedRoute) { }
+  constructor(private service: LibraryService, private studyService: StudyLevelContentService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
 
+    this.getStudyLevelContent();
   }
 
   ngAfterViewInit(): void {
     this.getElementValues();
     console.log('studyPhase: ', this.studyPhase);
     this.editGivenProtocolId();
+  }
+
+  /* For search Box */
+  getStudyLevelContent() {
+    this.studyService.getStudyLevelContent().subscribe(
+      response => this.studyLevelContentArray = response,
+      error => console.log('Error while getting study level content: ', error)
+    );
+  }
+
+  /* For search Box changes, data will automatically pull for selected protocolId */
+  getStudyProtocolsDetails() {
+    var protocolId = this.studyLevelContent.protocolId;
+    console.log('Selected protocol Id: ', protocolId);
+    this.studyService.findStudyLevelContentById(protocolId).subscribe(
+      response => this.studyLevelContent = response,
+      error => {
+        console.log("Error while fetching data", error),
+        this.studyLevelContent = new StudyLevelContent(protocolId, '', '', '', '');
+      }
+     
+    );
+
   }
 
   onAddStudyLevelContent(form: NgForm) {
@@ -61,10 +89,10 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   }
 
   // Edit
-  editGivenProtocolId(){
+  editGivenProtocolId() {
     this.urlParam = this._router.snapshot.paramMap.get("id");
-    console.log('edit route param: ', this.urlParam );
-    if(this.urlParam != null && this.urlParam !=""){
+    console.log('edit route param: ', this.urlParam);
+    if (this.urlParam != null && this.urlParam != "") {
       console.log('looking for protocol id: ', this.urlParam)
       this.studyService.findStudyLevelContentById(this.urlParam).subscribe(
         result => this.studyLevelContent = result,
@@ -95,15 +123,16 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
   }
 
   getElementValueRelationship(event: any) {
-    var theropoticAreaValue: string = event.target.innerText;
+    var theropoticAreaValue: string = this.studyLevelContent.therapeuticArea;
+
     this.service.getStudyElementValueRelationship().subscribe(
       response => {
         console.log('getElementValueRelationship response: ', response);
         this.elementValueRelationshipArray = response;
         this.elementValueRelationshipArray.forEach(element => {
           // remove from array if elementValue and type does not match
-          this.indicationArray.splice;
-          if (element.elementValue == theropoticAreaValue && element.elementType3 == 'Indication') { 
+          this.indicationArray = [];
+          if (element.elementValue.includes(theropoticAreaValue) && element.elementType3.includes('Indication')) {
             this.indicationArray.push(element.elementValue3);
           }
           else {
@@ -117,13 +146,13 @@ export class AddStudyContentComponent implements OnInit, AfterViewInit {
 
 
   /* Error Handling */
-  onHttpSuccess(successResponse){
-    console.log('Success: ',successResponse);
+  onHttpSuccess(successResponse) {
+    console.log('Success: ', successResponse);
     this.postSuccess = true;
     this.postSuccessMessage = "Record inserted successfully";
-    this.studyLevelContent = new StudyLevelContent('','','','','');
+    this.studyLevelContent = new StudyLevelContent('', '', '', '', '');
   }
-  onHttpError(errorResponse: any){
+  onHttpError(errorResponse: any) {
     console.log('error: ', errorResponse);
     this.postError = true;
     this.postErrorMessage = errorResponse.error.message;
