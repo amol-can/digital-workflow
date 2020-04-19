@@ -16,8 +16,12 @@ import { ActivatedRoute } from '@angular/router';
 export class AddObjectiveComponent implements OnInit, AfterViewInit {
   studyLevelContentArray: StudyLevelContent[];
   libraryValueArray: StudyDesignElementValue[];
+  //Library values
+  objectiveList = [];
+  endpointList = [];
+  primaryTimePointList = [];
 
-  objectiveModel = new Objective('', '', '');
+  objectiveModel = new Objective('', '', '','','');
   objectiveArray: Objective[];
 
   // Properties regarding error handling
@@ -50,9 +54,20 @@ export class AddObjectiveComponent implements OnInit, AfterViewInit {
 
   // Get Library data
   getLibraryValueData(){
-    this.libraryService.getStudyDesignElementValueByName('ObjectiveFullText').subscribe(
+    this.libraryService.getStudyDesignElementValue().subscribe(
       result =>{
         this.libraryValueArray = result;
+        this.libraryValueArray.forEach(element =>{
+          if(element.studyDesignElement.includes('ObjectiveFullText')){
+            this.objectiveList.push(element.value);
+          }
+          else if(element.studyDesignElement.includes('EndPointFullText')){
+            this.endpointList.push(element.value);
+          }
+          else if(element.studyDesignElement.includes('PrimaryTimepoint')){
+            this.primaryTimePointList.push(element.value);
+          }
+        });
       },
       error => console.log('error while calling library value api: ', error)
     );

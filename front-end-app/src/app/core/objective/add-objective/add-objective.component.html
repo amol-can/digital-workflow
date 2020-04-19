@@ -28,8 +28,8 @@
         <div class="input-group">
             <select class="custom-select" id="libraryRef" name="libraryRef"
                 [(ngModel)]="objectiveModel.objectiveFullText">
-                <option *ngFor="let library of libraryValueArray" [ngValue]="library.value">
-                    {{ library.value }}
+                <option *ngFor="let obj of objectiveList" [ngValue]="obj">
+                    {{ obj }}
                 </option>
             </select>
         </div>
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Objective Level -->
-        <label for="objectiveLevel">Select from objective full text library</label>
+        <label for="objectiveLevel">Objective Level</label>
         <div class="input-group">
             <select class="custom-select" id="objectiveLevel" name="objectiveLevel"
                 [(ngModel)]="objectiveModel.objectiveLevel">
@@ -52,6 +52,38 @@
                 <option>Secondary</option>
             </select>
         </div>
+
+        <!-- Endpoint full text ref -->
+        <label for="endpointRef">Select from endpoint full text library</label>
+        <div class="input-group">
+            <select class="custom-select" id="endpointRef" name="endpointRef"
+                [(ngModel)]="objectiveModel.endPointFullText">
+                <option *ngFor="let endpoint of endpointList" [ngValue]="endpoint">
+                    {{ endpoint }}
+                </option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="endPointFullText">Library Full Text:</label>
+            <textarea class="form-control" rows="4" id="endPointFullText" name="endPointFullText"
+                [(ngModel)]="objectiveModel.endPointFullText"
+                placeholder="initial value will be pull from library by selecting above dropdown"
+                required>{{ objectiveModel.endPointFullText }}</textarea>
+        </div>
+
+        <!-- primary time point -->
+        <label for="primaryTimePoint">Select from endpoint full text library</label>
+        <div class="input-group">
+            <select class="custom-select" id="primaryTimePoint" name="primaryTimePoint"
+                [(ngModel)]="objectiveModel.primaryTimePoint">
+                <option *ngFor="let primaryTime of primaryTimePointList" [ngValue]="primaryTime">
+                    {{ primaryTime }}
+                </option>
+            </select>
+        </div>
+
 
         <br>
         <button type="submit" class="btn btn-primary">Save</button>
