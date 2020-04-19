@@ -70,12 +70,25 @@
           </li>
 
           <!-- Study Level Content -->
-          <li>
+          <li class="sidebar-dropdown">
             <a routerLink="/study-level">
               <i class="fa fa-sticky-note"></i>
               <span>Study Design Elements</span>
               <!-- <span class="badge badge-pill badge-danger">3</span> -->
             </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a routerLink="/study-level">Study level content</a>
+                </li>
+                <li>
+                  <a routerLink="/objective">Objective & End point</a>
+                </li>
+                <li>
+                  <a routerLink="#">Beta</a>
+                </li>
+              </ul>
+            </div>
 
           </li>
 
@@ -89,12 +102,6 @@
               <ul>
                 <li>
                   <a routerLink="/protocol-level">Protocol level content</a>
-                </li>
-                <li>
-                  <a routerLink="/objective">Objective & End point</a>
-                </li>
-                <li>
-                  <a routerLink="#">Beta</a>
                 </li>
               </ul>
             </div>
