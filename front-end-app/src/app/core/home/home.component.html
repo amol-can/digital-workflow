@@ -1,57 +1,56 @@
-
 <div class="container">
-    <div class="row">
-        <h3>User Managed Protcols</h3>
-    </div>
-    <hr>
+  <div class="row">
+    <h3>User Managed Protcols</h3>
+  </div>
+  <hr>
 
-    <div class="row">
-        <table class="table table-hover">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Protocol Name</th>
-                <th scope="col">Short Title</th>
-                <th scope="col">Acronym</th>
-                <th scope="col">Theraputic Area</th>
-                <th scope="col">Compound Id</th>
-                <th scope="col">Study Phase</th>
-                <th scope="col">Study Type</th>
-                <th scope="col">Indication</th>
-                <th scope="col">Opearation</th>
-              </tr>
-            </thead>
-            <tbody *ngFor = 'let proto of protocols$'>
-              <tr>
-                <th scope="row">{{ proto.id }}</th>
-                <td>{{proto.title}}</td>
-                <td>{{proto.shortTitle}}</td>
-                <td>{{proto.acronym}}</td>
-                <td>NA</td>
-                <td>NA</td>
-                <td>NA</td>
-                <td>NA</td>
-                <td>NA</td>
-                <td><button type="button" class="btn btn-outline-info">Edit</button></td>
-              </tr>
-              
-            </tbody>
-          </table>
+  <br>
+  <div class="border" style="padding: 50px;">
+
+    <!-- Search by element-->
+    <div class="input-group">
+      <select class="custom-select" id="searchByElement">
+        <option selected>Choose Protocol...</option>
+        <option *ngFor="let protocol of studyLevelContentArray" [ngValue]="protocol.protocolId">{{ protocol.protocolId }}
+
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Search</button>
+      </div>
     </div>
-  
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-end">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-    
+
+    <br>
+
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Protocol Id</th>
+          <th scope="col">Theropotic Area</th>
+          <th scope="col">Indication</th>
+          <th scope="col">Study Phase</th>
+          <th scope="col">Study Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let studyContent of studyLevelContentArray">
+        <tr>
+          <th scope="row">{{ studyContent.protocolId }}</th>
+          <td>{{studyContent.therapeuticArea }}</td>
+          <td>{{studyContent.indication }}</td>
+          <td>{{studyContent.studyPhase }}</td>
+          <td>{{studyContent.studyType }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-info"
+              (click)="editElement(studyContent.protocolId)">Edit</button>
+            <button type="button" class="btn btn-outline-danger"
+              (click)="deleteContent(studyContent.protocolId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
 
 </div>
