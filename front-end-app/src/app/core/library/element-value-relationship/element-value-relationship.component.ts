@@ -81,6 +81,7 @@ export class ElementValueRelationshipComponent implements OnInit {
       response => {
         console.log('onElement2Change response: ', response);
         this.sdeLibraryValue2$ = response;
+        this.elementValueRelationshipArray = [];
         this.sdeLibraryValue2$.forEach(element => {
           console.log('getStudyDesignElementValueArray: ', element),
             this.elementValueRelationshipArray.push(new ElementValueRelationship('', '', '', '', false, element.studyDesignElement, element.value))

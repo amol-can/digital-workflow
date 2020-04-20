@@ -65,4 +65,8 @@ export class ElementRelationshipComponent implements OnInit {
     
   }
 
+  clearPage(){
+    this.getStudyDesignElementLibrary();
+  }
+
 }

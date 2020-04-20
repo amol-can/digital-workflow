@@ -120,7 +120,7 @@ export class AddProtocolContentComponent implements OnInit, AfterViewInit {
   onHttpSuccess(successResponse){
     console.log('Success: ',successResponse);
     this.postSuccess = true;
-    this.postSuccessMessage = "Record saved successfully";
+    this.postSuccessMessage = "Record successfully submitted ";
     //this.studyLevelContent = new StudyLevelContent('','','','','');
   }
   onHttpError(errorResponse: any){

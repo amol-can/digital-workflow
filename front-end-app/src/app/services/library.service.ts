@@ -26,8 +26,8 @@ export class LibraryService {
 
   libraryUrl = appConfig.BASE_API_URL+'reference-library';
   libraryValueUrl = appConfig.BASE_API_URL+'reference-value';
-  elementRelationshipUrl = appConfig+'library-relationship';
-  elementValueRelationshipUrl = appConfig+'value-relationship'
+  elementRelationshipUrl = appConfig.BASE_API_URL+'library-relationship';
+  elementValueRelationshipUrl = appConfig.BASE_API_URL+'value-relationship'
 
   constructor(private http: HttpClient) { }
 
