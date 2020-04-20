@@ -11,10 +11,7 @@ import * as appConfig from '../shared/config/globalConfig';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json,Origin',
-    'Access-Control-Allow-Headers': 'Cache-Control',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-    'Access-Control-Allow-Origin':'*'
+    'Content-Type': 'application/json'
   })
 };
 
