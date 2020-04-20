@@ -10,7 +10,7 @@
     <label for="protocolId">Protocol Id</label>
     <div class="input-group">
       <select class="custom-select" id="protocolId" name="protocolId" [(ngModel)]="protocolLevelContent.protocolId"
-        (change)="getStudyProtocols($event)">
+        (change)="getStudyProtocols()">
 
         <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
           {{ studyContent.protocolId }} </option>
@@ -18,7 +18,7 @@
       </select>
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button"
-          (click)="getStudyProtocols($event)">Search</button>
+          (click)="getStudyProtocols()">Search</button>
       </div>
     </div>
 
@@ -85,8 +85,8 @@
 
     <label for="interventionType">Intervention Type</label>
     <div class="input-group">
-      <select class="custom-select" id="interventionType" name="interventionType" [ngModel]="interventionType">
-        <option *ngFor="let interType of interventionTypeArray" [(ngValue)]="protocolLevelContent.interType">{{ interType }}
+      <select class="custom-select" id="interventionType" name="interventionType" [(ngModel)]="protocolLevelContent.interventionType">
+        <option *ngFor="let interType of interventionTypeArray" [ngValue]="interType">{{ interType }}
         </option>
       </select>
     </div>
@@ -105,7 +105,7 @@
     </div>
 
     <br>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 
     <!-- Error handling -->
     <div [hidden]="!postSuccess" class="alert alert-success">

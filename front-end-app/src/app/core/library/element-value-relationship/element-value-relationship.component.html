@@ -7,7 +7,7 @@
       <div class="border" style="padding: 50px;" id="addElement">
         <form #valueRelationForm="ngForm" (ngSubmit)="addValueRelationship(valueRelationForm)" ngNativeValidate>
 
-          <p>Form value: {{ valueRelationForm.value | json }}</p>
+          <!-- <p>Form value: {{ valueRelationForm.value | json }}</p> -->
 
           <!-- SD Element 1 -->
           <label for="element">Study Design Element</label>
@@ -37,7 +37,7 @@
             manage</small>
           <div class="input-group">
             <select class="custom-select" id="element2" name="element2" [(ngModel)]="element2"
-              (change)="getElement2($event);onElement2Change($event)">
+              (change)="getElement2();onElement2Change($event)">
               <option *ngFor="let sdeRelation of sdeLibraryRelationship$" [ngValue]="sdeRelation.elementType2">
                 {{ sdeRelation.elementType2 }}
               </option>

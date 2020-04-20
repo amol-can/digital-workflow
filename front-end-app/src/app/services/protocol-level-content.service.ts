@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProtocolLevelContentModel } from './model/protocol-level-content.model';
 import { Observable } from 'rxjs';
 import { Objective } from './model/objective.model';
+import * as appConfig from '../shared/config/globalConfig';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,8 +15,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProtocolLevelContentService {
-  protocolLevelContentUrl = '/server/api/v0/protocol-level';
-  objectiveUrl = '/server/api/v0/objective-data';
+  protocolLevelContentUrl = appConfig.BASE_API_URL+'protocol-level';
+  objectiveUrl = appConfig.BASE_API_URL+'objective-data';
 
   constructor(private http: HttpClient) { }
 

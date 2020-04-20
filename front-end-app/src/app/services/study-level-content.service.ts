@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { StudyLevelContent } from './model/study-level-content-model';
 import { Observable } from 'rxjs';
+import * as appConfig from '../shared/config/globalConfig';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +17,7 @@ export class StudyLevelContentService {
 
   constructor(private http: HttpClient) { }
 
-  studyLevelContentUrl = '/server/api/v0/study-level';
+  studyLevelContentUrl = appConfig.BASE_API_URL+'study-level';
 
   addStudyLevelContent(element : StudyLevelContent): Observable<any>{
     return this.http.post<StudyLevelContent>(this.studyLevelContentUrl,element,httpOptions);

@@ -11,7 +11,7 @@
         <label for="searchProtocolId">Select Protocol Id</label>
         <div class="input-group">
             <select class="custom-select" id="searchProtocolId" name="searchProtocolId" [(ngModel)]="objectiveModel.protocolId"
-                (change)="getObjectiveData($event)">
+                (change)="getObjectiveData()">
 
                 <option *ngFor="let studyContent of studyLevelContentArray" [ngValue]="studyContent.protocolId">
                     {{ studyContent.protocolId }} </option>
@@ -19,7 +19,7 @@
             </select>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button"
-                    (click)="getObjectiveData($event)">Search</button>
+                    (click)="getObjectiveData()">Search</button>
             </div>
         </div>
 
